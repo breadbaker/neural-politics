@@ -42,6 +42,6 @@
     "time-grunt": "^0.2.9"
   },
   "scripts": {
-    "postinstall": "echo postinstall time; ./node_modules/grunt-cli/bin/grunt"
+    "postinstall": "echo postinstall time; ./node_modules/.bin/grunt"
   }
 }
