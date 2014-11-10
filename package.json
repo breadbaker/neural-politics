@@ -38,5 +38,8 @@
     "sinon": "^1.8.2",
     "through": "^2.3.4",
     "time-grunt": "^0.2.9"
+  },
+  "scripts": {
+    "postinstall": "echo postinstall time; ./node_modules/grunt-cli/bin/grunt"
   }
 }
