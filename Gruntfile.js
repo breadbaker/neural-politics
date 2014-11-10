@@ -8,7 +8,7 @@ module.exports = function (grunt) {
         require('./' + task)(grunt);
     });
 
-    grunt.registerTask('default', [
+    grunt.registerTask('dev', [
         'clean',
         'handlebars',
         'less:dev',
@@ -17,6 +17,15 @@ module.exports = function (grunt) {
         'copy:dev',
         'concurrent',
         'notify:build',
+    ]);
+
+    grunt.registerTask('default', [
+        'clean',
+        'handlebars',
+        'less:dev',
+        'uglify:dev',
+        'browserify:dev',
+        'copy:dev'
     ]);
 
     grunt.registerTask('production', [
