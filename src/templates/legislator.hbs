@@ -1,0 +1,16 @@
+<h1>legislator</h1>
+
+<p class="name">{{firstlast}}</p>
+<p class="{{gender}}">{{getGender gender}}</p>
+<p class="{{party}}">{{getParty  party}}</p>
+
+<h3>Contributors</h3>
+
+<div class="row contributors">
+    {{#each contributors}}
+        <div class="col-xs-2">
+            <p>{{org_name}}</p>
+            <p>{{currency total}}</p>
+        </div>
+    {{/each}}
+</div>
