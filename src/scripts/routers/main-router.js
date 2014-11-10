@@ -2,8 +2,6 @@
 
 var RouterBase = require('./router-base');
 
-var ColorView = require('views/color-view');
-
 var ChooseStateView = require('views/choose-state-view');
 
 var TrainView = require('views/train-view');
