@@ -30,7 +30,7 @@ module.exports = function (grunt) {
                 {
                     expand: true,
                     cwd: 'src/',
-                    src: ['**/*.png', '**/*.gif', '**/*.jpg', '**/*.svg', '**/*.eot', '**/*.ttf', '**/*.woff', '**/*.json', '**/*.pdf', '**/*.pptx', '**/*.swf'],
+                    src: ['**/*.png', 'favicon.ico', '**/*.gif', '**/*.jpg', '**/*.svg', '**/*.eot', '**/*.ttf', '**/*.woff', '**/*.json', '**/*.pdf', '**/*.pptx', '**/*.swf'],
                     dest: 'web'
                 }
             ]

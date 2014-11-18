@@ -127,9 +127,9 @@ templates["legislator"] = Handlebars.template({"1":function(depth0,helpers,parti
 
 templates["like-meter"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "<h1>We think you like "
+  return "<div class=\"col-xs-10 col-xs-offset-1\">\n    <h1>We think you like this legislator "
     + escapeExpression(((helpers.formatPercent || (depth0 && depth0.formatPercent) || helperMissing).call(depth0, (depth0 != null ? depth0.liked : depth0), {"name":"formatPercent","hash":{},"data":data})))
-    + "</h1>";
+    + "</h1>\n</div>";
 },"useData":true});
 
 templates["states-map"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
@@ -145,7 +145,7 @@ templates["test"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main"
   },"useData":true});
 
 templates["thanks"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  return "<div class=\"text-center\">\n    Thanks for playing!\n\n    This was a simple implementation of a javascript neural network \n\n    <a href=\"https://github.com/harthur/brain\" target=\"_blank\">Brain</a>,\n\n    with data supported by the <a href=\"https://www.opensecrets.org/\" target=\"_blank\">Open Secrets Api</a>.\n\n    <button class=\"btn-link\">Try Again</button>\n</div>";
+  return "<div class=\"text-center thanks\">\n    <p>\n        Thanks for playing!\n\n        This was a simple implementation of a javascript neural network \n\n        <a href=\"https://github.com/harthur/brain\" target=\"_blank\">Brain</a>,\n\n        with data supported by the <a href=\"https://www.opensecrets.org/\" target=\"_blank\">Open Secrets Api</a>.\n    </p>\n\n    <p>\n        What you did was train this neural network by connecting the preference outcome to the input points you saw.\n    </p>\n    <p>\n        <button class=\"btn-link\">Try Again</button>\n    </p>\n</div>";
   },"useData":true});
 
 templates["train"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
