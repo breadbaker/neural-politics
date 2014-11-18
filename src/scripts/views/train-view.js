@@ -4,6 +4,8 @@ var BaseView = require('base-view');
 var Handlebars = require('handlebars');
 var templates = require('templates')(Handlebars);
 
+var contribPie = require('lib/contrib-pie');
+
 module.exports = BaseView.extend({
     template: templates['train'],
 
@@ -17,10 +19,13 @@ module.exports = BaseView.extend({
 
     renderLegislator: function () {
       var that = this;
-      App.legislators.at(this.index).getContributors(function () {
+      App.legislators.at(this.index).getData(function () {
         that.$('.legislator').html(that.legislatorTemplate(App.legislators.at(that.index).toJSON()));
+        // that.contribPie();
       })
     },
+
+    contribPie: contribPie,
 
     index: 0,
 

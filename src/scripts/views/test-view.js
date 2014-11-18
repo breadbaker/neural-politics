@@ -4,6 +4,8 @@ var BaseView = require('base-view');
 var Handlebars = require('handlebars');
 var templates = require('templates')(Handlebars);
 
+var contribPie = require('lib/contrib-pie');
+
 module.exports = BaseView.extend({
     template: templates['test'],
 
@@ -23,12 +25,16 @@ module.exports = BaseView.extend({
 
     renderLegislator: function () {
       var that = this;
-      var currentLegislator = App.legislators.at(this.index);
-      currentLegislator.getContributors(function () {
+      var currentLegislator = this.legislators[this.index];
+      currentLegislator.getData(function () {
         that.$('.legislator').html(that.legislatorTemplate(currentLegislator.toJSON()));
         that.$('.like-meter').html(that.likeTemplate(currentLegislator.getLiked()));
       })
+
+      // this.contribPie();
     },
+
+    contribPie: contribPie,
 
     index: 0,
 
@@ -37,8 +43,12 @@ module.exports = BaseView.extend({
     },
 
     getNext: function () {
-      this.index++;
-      this.renderLegislator();
+      if (this.index +1 >= this.legislators.length) {
+        window.location.hash = 'thanks';
+      } else {
+        this.index++;
+        this.renderLegislator();
+      }
     }
 
 });

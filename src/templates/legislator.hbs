@@ -1,16 +1,32 @@
-<h1>legislator</h1>
 
-<p class="name">{{firstlast}}</p>
-<p class="{{gender}}">{{getGender gender}}</p>
-<p class="{{party}}">{{getParty  party}}</p>
+<p class="basics name">{{firstlast}}</p>
+<p class="basics {{gender}}">{{getGender gender}}</p>
+<p class="basics {{party}}">{{getParty  party}}</p>
+<div class="row">
+    <div class="col-xs-offset-2 col-xs-10">
+        <p>State: {{state}}</p>
+        <p>Cash On Hand: {{currency cash}}</p>
+        <p>Debt: {{currency debt}}</p>
+        <p>First Elected: {{firstElected}}</p>
+        <p>Spent: {{currency spent}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="col-xs-10 col-xs-offset-1">
+            <h3>Contributors</h3>
 
-<h3>Contributors</h3>
-
-<div class="row contributors">
-    {{#each contributors}}
-        <div class="col-xs-2">
-            <p>{{org_name}}</p>
-            <p>{{currency total}}</p>
+            <p>Total Contibutions: {{currency contributions}}</p>
         </div>
-    {{/each}}
+        <div class="row contributors">
+            <div class="col-xs-12">
+                {{#each contributors}}
+                    <div class="col-xs-2">
+                        <p>{{org_name}}</p>
+                        <p>{{currency total}}</p>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
 </div>

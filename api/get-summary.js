@@ -9,7 +9,7 @@ var xml;
 console.log('hello', process.env)
 
 module.exports = function (req, res) {
-    client.get("http://www.opensecrets.org/api/?method=candContrib&cid=" + req.body.cid + "&cycle=2014&apikey=" + process.env.OPEN_KEY, function(data, response){
+    client.get("http://www.opensecrets.org/api/?method=candSummary&cid=" + req.body.cid + "&cycle=2014&apikey=" + process.env.OPEN_KEY, function(data, response){
                 // parsed response body as js object
                 xml = data;
                 // raw response

@@ -4,7 +4,11 @@ var RouterBase = require('./router-base');
 
 var ChooseStateView = require('views/choose-state-view');
 
+var StatesCollection = require('collections/states-collection');
+
 var TrainView = require('views/train-view');
+
+var ThanksView = require('views/thanks-view');
 
 var TestView = require('views/test-view');
 
@@ -19,11 +23,15 @@ module.exports = RouterBase.extend({
         'chooseState': 'chooseState',
         'getLegislators/:state': 'getLegislators',
         'train': 'train',
-        'trainNetwork': 'trainNetwork'
+        'trainNetwork': 'trainNetwork',
+        'thanks': 'thanks'
     },
 
     chooseState: function () {
         var that = this;
+
+        App.chosenStates = new StatesCollection();
+        App.legislators = new LegislatorsCollection();
 
         this.showView(new ChooseStateView());
     },
@@ -34,15 +42,7 @@ module.exports = RouterBase.extend({
             return;
         }
         var legislators = [];
-        $.post('/getLegislators', {
-            state: state
-        }, function (data) {
-            _.each(data.legislator, function (legislator) {
-                legislators.push(legislator.$);
-            });
-            App.legislators = new LegislatorsCollection(legislators);
-            window.location.hash = 'train'
-        });
+
     },
 
     train: function () {
@@ -81,5 +81,15 @@ module.exports = RouterBase.extend({
         Backbone.history.start();
 
         return this;
+    },
+
+    thanks: function () {
+        if (!App.legislators) {
+            window.location.hash = 'chooseState';
+            return;
+        }
+        var that = this;
+
+        this.showView(new ThanksView());
     }
 });
