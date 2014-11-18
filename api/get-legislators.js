@@ -13,7 +13,11 @@ module.exports = function (req, res) {
                 // raw response
                 ///console.log(response);
                 parseString(xml, function (err, result) {
-                    res.send(result.response);
+                    if (err) {
+                        res.send({});
+                    } else {
+                        res.send(result.response);
+                    }
                 });
 
             });
