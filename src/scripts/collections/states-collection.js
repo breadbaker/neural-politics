@@ -14,5 +14,19 @@ module.exports = BaseCollection.extend({
         } else {
             this.add(model);
         }
+    },
+
+    ready: function () {
+        return App.chosenStates.models.length > 1;
+    },
+
+    getLegislators: function (callback) {
+        var fetched = _.after(App.chosenStates.models.length, callback);
+        _.each(App.chosenStates.models, function (model) {
+            model.fetch({
+                success: fetched,
+                error: fetched
+            });
+        });
     }
-})
+});

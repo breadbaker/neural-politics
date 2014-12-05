@@ -3,50 +3,64 @@
 var BaseModel = require('base-model');
 var __super__ = BaseModel.prototype;
 
+var ContributorsCollection = require('collections/contributors-collection');
+
+var LegistlatorSummaryModel = require('models/summary-model');
+
+var IndustriesCollection = require('collections/industries-collection');
+
+var ProfileModel = require('models/profile-model');
+
 module.exports = BaseModel.extend({
-
-    getContributors: function (callback) {
-        var that = this;
-        var contributors = [];
-        $.post('/get-contributors', {  cid: this.get('cid')}, function (data) {
-            _.each(data.contributors[0].contributor, function (contributor) {
-                contributors.push(contributor.$);
-            })
-            that.set('contributors', new Backbone.Collection(contributors));
-            callback();
-        });
-    },
-
-    getData: function (callback) {
-        var fetched = _.after(2, callback);
-        this.getContributors(fetched);
-        this.getSummary(fetched);
-    },
-
-    getSummary: function (callback) {
-        var that = this;
-        $.post('/get-summary', {  cid: this.get('cid')}, function (data) {
-            that.set('summary', data.summary[0].$);
-            callback();
-        });
-    },
 
     defaults: function () {
         return {
-            seen: false
-        };
+            contributors: new ContributorsCollection(),
+            summary: new LegistlatorSummaryModel(),
+            industries: new IndustriesCollection(),
+            profile: new ProfileModel()
+        }
     },
+
+    childModels: ['summary', 'contributors', 'profile', 'industries'],
+
+    fetch: function (opt) {
+        var success = _.after(this.childModels.length, opt.success);
+
+        var model;
+        _.each(this.childModels, function (attr) {
+            model = this.get(attr);
+            model.id = this.get('cid');
+            model.fetch({
+                success: success,
+                error: opt.error
+            }, this);
+        }, this);
+    },
+
+    summable: ['industries', 'contributors'],
 
     toJSON: function () {
         var json = BaseModel.prototype.toJSON.apply(this, arguments);
 
-        json.contributors = this.get('contributors').toJSON();
-        json.debt = json.summary.debt;
-        json.firstElected = json.summary.first_elected;
-        json.spent = json.summary.spent;
-        json.cash = json.summary.cash_on_hand;
-        json.contributions = this.contributions();
-        json.state = json.summary.state;
+        // json.contributors = this.get('contributors').toJSON();
+        // json.summary = this.get('summary').toJSON();
+        _.each(this.childModels, function (attr) {
+            json[attr] = this.get(attr).toJSON()
+        }, this);
+
+        _.each(this.summable, function (attr) {
+            json[attr + 'Total'] = _.inject(json[attr], function ( memo, el) {
+                return memo + +el.total;
+            }, 0);
+        }, this);
+
+        // json.debt = json.summary.debt;
+        // json.firstElected = json.summary.first_elected;
+        // json.spent = json.summary.spent;
+        // json.cash = json.summary.cash_on_hand;
+        // json.contributions = this.contributions();
+        // json.state = json.summary.state;
 
         return json;
     },

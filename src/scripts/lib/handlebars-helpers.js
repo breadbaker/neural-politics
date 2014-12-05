@@ -38,12 +38,23 @@ Handlebars.registerHelper({
         return new Handlebars.SafeString(html);
     },
 
+    item: function (label, value) {
+        return new Handlebars.SafeString(templates['util/item']({
+            label: label,
+            value: value
+        }));
+    },
+
     getGender: function (g) {
-        return g === 'F' ? 'Female' : 'Male';
+        return g === 'F' ? 'female' : 'male';
     },
 
     getParty: function (p) {
         return p === 'R' ? 'Republican' : 'Democrat';
+    },
+
+    partyImage: function (p) {
+        return p === 'R' ? 'elephant.png' : 'donkey.png';
     },
 
     currency: function (c) {

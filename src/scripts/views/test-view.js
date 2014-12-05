@@ -28,6 +28,8 @@ module.exports = BaseView.extend({
       var currentLegislator = this.legislators[this.index];
       currentLegislator.getData(function () {
         that.$('.legislator').html(that.legislatorTemplate(currentLegislator.toJSON()));
+
+        that.contribPie(currentLegislator.get('contributors').forContour());
         that.$('.like-meter').html(that.likeTemplate(currentLegislator.getLiked()));
       })
 

@@ -1,6 +1,6 @@
 module.exports = function (data) {
     new Contour({
-        el: '.contrib-pie',
+        el: '.industry-pie',
         // pie: {
         //     piePadding: {
         //         left: 100 - data.total / 12000
@@ -8,7 +8,7 @@ module.exports = function (data) {
         //     outerRadius: data.total / 1200
         // },
         chart: {
-            height:data.total / 800
+            height:data.total / 2200
         },
         legend: {
             vAlign: 'top'

@@ -97,7 +97,7 @@ NeuralNetwork.prototype = {
     if (!hiddenSizes) {
       hiddenSizes = [Math.max(3, Math.floor(inputSize / 2))];
     }
-    var sizes = _([inputSize, hiddenSizes, outputSize]).flatten();
+    var sizes = _.flatten([inputSize, hiddenSizes, outputSize]);
     this.initialize(sizes);
 
     var error = 1;
@@ -187,23 +187,23 @@ NeuralNetwork.prototype = {
     }
     // turn sparse hash input into arrays with 0s as filler
     var datum = data[0].input;
-    if (!_(datum).isArray() && !(datum instanceof Float64Array)) {
+    if (!_.isArray(datum) && !(datum instanceof Float64Array)) {
       if (!this.inputLookup) {
-        this.inputLookup = lookup.buildLookup(_(data).pluck("input"));
+        this.inputLookup = lookup.buildLookup(_.pluck(data,"input"));
       }
-      data = data.map(function(datum) {
+      data = _.map(data, function(datum) {
         var array = lookup.toArray(this.inputLookup, datum.input)
-        return _(_(datum).clone()).extend({ input: array });
+        return _.extend(_.clone(datum), { input: array });
       }, this);
     }
 
-    if (!_(data[0].output).isArray()) {
+    if (!_.isArray(data[0].output)) {
       if (!this.outputLookup) {
-        this.outputLookup = lookup.buildLookup(_(data).pluck("output"));
+        this.outputLookup = lookup.buildLookup(_.pluck(data,"output"));
       }
-      data = data.map(function(datum) {
+      data = _.map(data, function(datum) {
         var array = lookup.toArray(this.outputLookup, datum.output);
-        return _(_(datum).clone()).extend({ output: array });
+        return _.extend(_.clone(datum), { output: array });
       }, this);
     }
     return data;
@@ -235,13 +235,13 @@ NeuralNetwork.prototype = {
         expected = target[0];
       }
       else {
-        actual = output.indexOf(_(output).max());
-        expected = target.indexOf(_(target).max());
+        actual = output.indexOf(_.max(output));
+        expected = target.indexOf(_.max(target));
       }
 
       if (actual != expected) {
         var misclass = data[i];
-        _(misclass).extend({
+        _.extend(misclass, {
           actual: actual,
           expected: expected
         })
@@ -276,7 +276,7 @@ NeuralNetwork.prototype = {
     };
 
     if (isBinary) {
-      _(stats).extend({
+      _.extend(stats, {
         trueNeg: trueNeg,
         truePos: truePos,
         falseNeg: falseNeg,
@@ -309,10 +309,10 @@ NeuralNetwork.prototype = {
       var nodes;
       // turn any internal arrays back into hashes for readable json
       if (layer == 0 && this.inputLookup) {
-        nodes = _(this.inputLookup).keys();
+        nodes = _.keys(this.inputLookup);
       }
       else if (layer == this.outputLayer && this.outputLookup) {
-        nodes = _(this.outputLookup).keys();
+        nodes = _.keys(this.outputLookup);
       }
       else {
         nodes = _.range(0, this.sizes[layer]);
@@ -356,7 +356,7 @@ NeuralNetwork.prototype = {
         this.outputLookup = lookup.lookupFromHash(layer);
       }
 
-      var nodes = _(layer).keys();
+      var nodes = _.keys(layer);
       this.sizes[i] = nodes.length;
       this.weights[i] = [];
       this.biases[i] = [];
@@ -365,7 +365,7 @@ NeuralNetwork.prototype = {
       for (var j in nodes) {
         var node = nodes[j];
         this.biases[i][j] = layer[node].bias;
-        this.weights[i][j] = _(layer[node].weights).toArray();
+        this.weights[i][j] = _.toArray(layer[node].weights);
       }
     }
     return this;
@@ -527,7 +527,7 @@ TrainStream.prototype.finishStreamIteration = function() {
     if (!hiddenSizes) {
       hiddenSizes = [Math.max(3, Math.floor(inputSize / 2))];
     }
-    var sizes = _([inputSize, hiddenSizes, outputSize]).flatten();
+    var sizes = _.flatten([inputSize, hiddenSizes, outputSize]);
     this.dataFormatDetermined = true;
     this.neuralNetwork.initialize(sizes);
 

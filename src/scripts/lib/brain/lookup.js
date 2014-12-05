@@ -3,8 +3,8 @@
 
 function buildLookup(hashes) {
   // [{a: 1}, {b: 6, c: 7}] -> {a: 0, b: 1, c: 2}
-  var hash = _(hashes).reduce(function(memo, hash) {
-    return _(memo).extend(hash);
+  var hash = _.reduce(hashes, function(memo, hash) {
+    return _.extend(memo, hash);
   }, {});
   return lookupFromHash(hash);
 }

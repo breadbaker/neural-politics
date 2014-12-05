@@ -12,7 +12,7 @@
 
 .make-series-colors(@namespace, @colorList) {
 
-    .make-color(@index, @list) when (@index < 9) {
+    .make-color(@index, @list) when (@index < 15) {
         @{list} {
             @color-def: extract(@colorList, @index);
             color: extract(@colorList, @index);
@@ -42,6 +42,12 @@
     .make-color(6, ~'@{namespace}.s-6');
     .make-color(7, ~'@{namespace}.s-7');
     .make-color(8, ~'@{namespace}.s-8');
+    .make-color(9, ~'@{namespace}.s-9');
+    .make-color(10, ~'@{namespace}.s-10');
+    .make-color(11, ~'@{namespace}.s-11');
+    .make-color(12, ~'@{namespace}.s-12');
+    .make-color(13, ~'@{namespace}.s-13');
+    .make-color(14, ~'@{namespace}.s-14');
 
 }
 

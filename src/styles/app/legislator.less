@@ -18,6 +18,52 @@
         display: inline-block;
         margin-left: 30px;
     }
+
+    .party-image {
+        opacity: 0.1;
+        position: absolute;
+        left: 0;
+        z-index: -1;
+    }
+
+    .gender {
+        font-size: 22px;
+        background: black;
+        border-radius: 3px;
+        padding: 2px;
+        margin-left: 16px;
+    }
+
+    .gender.fa-male {
+        color: rgb(128, 128, 214);
+    }
+    .gender.fa-female {
+        color: pink;
+    }
+
+    .state {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .contact-info {
+        li {
+            list-style-type: none;
+        }
+    }
+
+    .finance-range {
+        path.domain, .y.axis {
+            opacity: 0;
+            stroke: none;
+        }
+    }
+
+    .low-range {
+        color: none;
+        stroke: none;
+        fill: none;
+    }
 }
 
 .decision {

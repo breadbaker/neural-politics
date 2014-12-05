@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var _ = require('lodash');
 app.use(express.bodyParser());
 
 try {
@@ -8,12 +9,18 @@ try {
 catch (e) {
 }
 
-// app.get('/css/moolah.css', function(req, res) {
-//   res.sendfile(__dirname + '/css/moolah.css');
-// });
-app.post('/getLegislators', require('./api/get-legislators'));
-app.post('/get-contributors', require('./api/get-contributors'));
-app.post('/get-summary', require('./api/get-summary'));
+var urlMap = require('./api/url-map');
+var openSecret = require('./api/get-open');
+
+_.each(urlMap, function( fn, key) {
+    app.get(key, function (req, res) {
+        var url = urlMap[req.path](req);
+
+        openSecret(url, function (data) {
+            res.send(data);
+        });
+    })
+});
 
 app.get('/', function(req, res) {
   res.sendfile(__dirname + '/web/index.html');

@@ -5,6 +5,8 @@ var Handlebars = require('handlebars');
 var templates = require('templates')(Handlebars);
 
 var contribPie = require('lib/contrib-pie');
+var industryPie = require('lib/industry-pie');
+var rangeItems = require('lib/range-item');
 
 module.exports = BaseView.extend({
     template: templates['train'],
@@ -14,20 +16,36 @@ module.exports = BaseView.extend({
     render: function () {
       this.$el.html(this.template());
       this.renderLegislator();
+
       return this;
+    },
+
+    initialize: function () {
+      this.legislators = App.legislators.getTrainingLegislators();
+      this.legislator = this.legislators.pop();
+      return BaseView.prototype.initialize.apply(this, arguments);
     },
 
     renderLegislator: function () {
       var that = this;
-      App.legislators.at(this.index).getData(function () {
-        that.$('.legislator').html(that.legislatorTemplate(App.legislators.at(that.index).toJSON()));
-        // that.contribPie();
-      })
+      this.legislator.fetch({
+        success: function () {
+          that.$('.legislator').html(that.legislatorTemplate(that.legislator.toJSON()));
+          that.contribPie(that.legislator.get('contributors').forContour());
+          that.industryPie(that.legislator.get('industries').forContour());
+          that.rangeItems(that.legislator.get('profile').rangeItems());
+        },
+        error: function () {
+          that.moveNext();
+        }
+      });
     },
 
     contribPie: contribPie,
 
-    index: 0,
+    industryPie: industryPie,
+
+    rangeItems: rangeItems,
 
     events: {
       'click .like':'likeLegislator',
@@ -43,15 +61,17 @@ module.exports = BaseView.extend({
     },
 
     setPreference: function (liked) {
-      App.legislators.at(this.index).set({
-        liked: liked,
-        seen: true
+      this.legislator.set({
+        liked: liked
       });
-      this.index++;
-      this.renderLegislator();
-      if (this.index > 8) {
-        window.location.hash = 'trainNetwork';
-      }
-    }
+      this.moveNext();
+    },
 
+    moveNext: function () {
+      if (!this.legislators.length) {
+        App.trainNetwork();
+      }
+      this.legislator = this.legislators.pop();
+      this.renderLegislator();
+    }
 });

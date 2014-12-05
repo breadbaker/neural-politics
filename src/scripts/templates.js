@@ -89,40 +89,39 @@ templates["header"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"mai
     + "</span>\n        </div>\n        <div>\n            <span>Progress</span>\n        </div>\n    </div>\n</div>";
 },"useData":true});
 
-templates["legislator"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
-  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "                    <div class=\"col-xs-2\">\n                        <p>"
-    + escapeExpression(((helper = (helper = helpers.org_name || (depth0 != null ? depth0.org_name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"org_name","hash":{},"data":data}) : helper)))
-    + "</p>\n                        <p>"
-    + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, (depth0 != null ? depth0.total : depth0), {"name":"currency","hash":{},"data":data})))
-    + "</p>\n                    </div>\n";
-},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "\n<p class=\"basics name\">"
+templates["legislator"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var stack1, helper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, functionType="function", lambda=this.lambda;
+  return "<div class=\"col-xs-5\">\n    <p class=\"basics\">\n        <img class=\"party-image\" src=\"/web/images/"
+    + escapeExpression(((helpers.partyImage || (depth0 && depth0.partyImage) || helperMissing).call(depth0, (depth0 != null ? depth0.party : depth0), {"name":"partyImage","hash":{},"data":data})))
+    + "\">\n        <span class=\"name\">"
     + escapeExpression(((helper = (helper = helpers.firstlast || (depth0 != null ? depth0.firstlast : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"firstlast","hash":{},"data":data}) : helper)))
-    + "</p>\n<p class=\"basics "
-    + escapeExpression(((helper = (helper = helpers.gender || (depth0 != null ? depth0.gender : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"gender","hash":{},"data":data}) : helper)))
-    + "\">"
+    + "</span>\n        <i class=\"gender fa fa-"
     + escapeExpression(((helpers.getGender || (depth0 && depth0.getGender) || helperMissing).call(depth0, (depth0 != null ? depth0.gender : depth0), {"name":"getGender","hash":{},"data":data})))
-    + "</p>\n<p class=\"basics "
-    + escapeExpression(((helper = (helper = helpers.party || (depth0 != null ? depth0.party : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"party","hash":{},"data":data}) : helper)))
-    + "\">"
-    + escapeExpression(((helpers.getParty || (depth0 && depth0.getParty) || helperMissing).call(depth0, (depth0 != null ? depth0.party : depth0), {"name":"getParty","hash":{},"data":data})))
-    + "</p>\n<div class=\"row\">\n    <div class=\"col-xs-offset-2 col-xs-10\">\n        <p>State: "
-    + escapeExpression(((helper = (helper = helpers.state || (depth0 != null ? depth0.state : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"state","hash":{},"data":data}) : helper)))
-    + "</p>\n        <p>Cash On Hand: "
-    + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, (depth0 != null ? depth0.cash : depth0), {"name":"currency","hash":{},"data":data})))
-    + "</p>\n        <p>Debt: "
-    + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, (depth0 != null ? depth0.debt : depth0), {"name":"currency","hash":{},"data":data})))
-    + "</p>\n        <p>First Elected: "
-    + escapeExpression(((helper = (helper = helpers.firstElected || (depth0 != null ? depth0.firstElected : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"firstElected","hash":{},"data":data}) : helper)))
-    + "</p>\n        <p>Spent: "
+    + "\"></i>\n        <span class=\"state\">"
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.summary : depth0)) != null ? stack1.state : stack1), depth0))
+    + "</span>\n    </p>\n    <div class=\"contact-info\">\n        <p class=\"header\">\n            Contact\n        </p>\n        <ul>\n            "
+    + escapeExpression(((helpers.item || (depth0 && depth0.item) || helperMissing).call(depth0, "Phone:", (depth0 != null ? depth0.phone : depth0), {"name":"item","hash":{},"data":data})))
+    + "\n            <li>\n                <span class=\"label\">Website</span>\n                <span class=\"value\">\n                    <a href=\""
+    + escapeExpression(((helper = (helper = helpers.website || (depth0 != null ? depth0.website : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"website","hash":{},"data":data}) : helper)))
+    + "\" target=\"_blank\">"
+    + escapeExpression(((helper = (helper = helpers.website || (depth0 != null ? depth0.website : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"website","hash":{},"data":data}) : helper)))
+    + "</a>\n                </span>\n            </li>\n            <li>\n                <a href=\"https://www.facebook.com/"
+    + escapeExpression(((helper = (helper = helpers.facebook_id || (depth0 != null ? depth0.facebook_id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"facebook_id","hash":{},"data":data}) : helper)))
+    + "\" target=\"_blank\">\n                    Facebook Page\n                </a>\n            </li>\n            <li>\n                <a href=\"https://twitter.com/"
+    + escapeExpression(((helper = (helper = helpers.twitter_id || (depth0 != null ? depth0.twitter_id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"twitter_id","hash":{},"data":data}) : helper)))
+    + "\" target=\"_blank\">\n                    Twitter Page\n                </a>\n            </li>\n\n        </ul>\n    </div>\n    <div class=\"assets\">\n        \n    <div class=\"finance-range\"></div>\n\n    <p>Cash On Hand: "
+    + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, ((stack1 = (depth0 != null ? depth0.summary : depth0)) != null ? stack1.cash : stack1), {"name":"currency","hash":{},"data":data})))
+    + "</p>\n    <p>Debt: "
+    + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, ((stack1 = (depth0 != null ? depth0.summary : depth0)) != null ? stack1.debt : stack1), {"name":"currency","hash":{},"data":data})))
+    + "</p>\n    <p>First Elected: "
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.summary : depth0)) != null ? stack1.firstElected : stack1), depth0))
+    + "</p>\n    <p>Spent: "
     + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, (depth0 != null ? depth0.spent : depth0), {"name":"currency","hash":{},"data":data})))
-    + "</p>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col-xs-12\">\n        <div class=\"col-xs-10 col-xs-offset-1\">\n            <h3>Contributors</h3>\n\n            <p>Total Contibutions: "
-    + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, (depth0 != null ? depth0.contributions : depth0), {"name":"currency","hash":{},"data":data})))
-    + "</p>\n        </div>\n        <div class=\"row contributors\">\n            <div class=\"col-xs-12\">\n";
-  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.contributors : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
-  if (stack1 != null) { buffer += stack1; }
-  return buffer + "            </div>\n        </div>\n    </div>\n</div>";
+    + "</p>\n</div>\n<div class=\"col-xs-7\">\n    <div class=\"row\">\n        <div class=\"col-xs-6\">\n\n            <h3>Contributors</h3>\n            <p>Total Contibutions: "
+    + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, (depth0 != null ? depth0.contributorsTotal : depth0), {"name":"currency","hash":{},"data":data})))
+    + "</p>\n            <div class=\"contrib-pie\">\n            </div>\n        </div>\n        <div class=\"col-xs-6\">\n\n            <p>Total In Industries: "
+    + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, (depth0 != null ? depth0.industriesTotal : depth0), {"name":"currency","hash":{},"data":data})))
+    + "</p>\n            <div class=\"industry-pie\">\n            </div>\n        </div>\n    </div>\n</div>\n\n\n";
 },"useData":true});
 
 templates["like-meter"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
@@ -137,7 +136,7 @@ templates["states-map"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],
   },"useData":true});
 
 templates["states"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  return "<div class=\"states col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-2\">\n        <h1>\n            1. Choose at least 5 states\n            <button class=\"next hidden btn btn-success\">\n                Next\n            </button>\n        </h1>\n        <div class=\"chosen-states\">\n        </div>\n        <div class=\"current-state\">\n        </div>\n        <div class=\"states-map\">\n        </div>\n</div>";
+  return "<\n\n<div class=\"states row\">\n    <div class=\"col-xs-4\">\n        <h3>\n            1. Choose at least 5 states\n        </h3>\n        <div class=\"chosen-states\">\n        </div>\n        <div class=\"current-state\">\n        </div>\n    </div>\n    <div class=\"col-xs-8\">\n        <div class=\"states-map\">\n        </div>\n    </div>\n</div>\n<button class=\"next hidden btn btn-success\">\n    Next\n</button>";
   },"useData":true});
 
 templates["test"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
@@ -145,16 +144,25 @@ templates["test"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main"
   },"useData":true});
 
 templates["thanks"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  return "<div class=\"text-center thanks\">\n    <p>\n        Thanks for playing!\n\n        This was a simple implementation of a javascript neural network \n\n        <a href=\"https://github.com/harthur/brain\" target=\"_blank\">Brain</a>,\n\n        with data supported by the <a href=\"https://www.opensecrets.org/\" target=\"_blank\">Open Secrets Api</a>.\n    </p>\n\n    <p>\n        What you did was train this neural network by connecting the preference outcome to the input points you saw.\n    </p>\n    <p>\n        <button class=\"btn-link\">Try Again</button>\n    </p>\n</div>";
+  return "<div class=\"text-center thanks\">\n    <p>\n        Thanks for playing!\n\n        This was a simple implementation of a javascript neural network \n\n        <a href=\"https://github.com/harthur/brain\" target=\"_blank\">Brain</a>,\n\n        with data supported by the <a href=\"https://www.opensecrets.org/\" target=\"_blank\">Open Secrets Api</a>.\n    </p>\n\n    <p>\n        What you did was train this neural network by connecting the preference outcome to the input points you saw.\n    </p>\n\n    <p>\n        The source is open and <a href=\"https://github.com/breadbaker/neural-politics\" target=\"_blank\">here</a>\n    <p>\n        <button class=\"btn-link\">Try Again</button>\n    </p>\n</div>";
   },"useData":true});
 
 templates["train"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  return "<div class=\"row decision text-center\">\n    <button class=\"btn btn-danger like\">Like</button>\n    <button class=\"btn btn-success dislike\">Dislike</button>\n</div>\n<div class=\"legislator\">\n</div>";
+  return "<div class=\"row decision text-center\">\n    <button class=\"btn btn-danger like\">Like</button>\n    <button class=\"btn btn-success dislike\">Dislike</button>\n</div>\n<div class=\"legislator row\">\n</div>";
   },"useData":true});
 
 templates["util/fart"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   return "<h1>fort</h1>";
   },"useData":true});
+
+templates["util/item"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  return "<li>\n    <span class=\"label\">"
+    + escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"label","hash":{},"data":data}) : helper)))
+    + "</span><span class=\"value\">"
+    + escapeExpression(((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"value","hash":{},"data":data}) : helper)))
+    + "</span>\n</li>";
+},"useData":true});
 
 templates["util/title-bar"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;

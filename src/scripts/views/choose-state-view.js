@@ -38,7 +38,6 @@ module.exports = BaseView.extend({
 
       _.each(this.chosenStates.models, function (model) {
         this.$('#US-' + model.id).addClass('chosen');
-        this.$
       }, this);
     },
 
@@ -52,11 +51,10 @@ module.exports = BaseView.extend({
       App.chosenStates.toggleState(this.currentStateId);
       this.checkCount();
       this.chosenView.render();
-      // window.location.hash = 'getLegislators/' + this.currentStateId;
     },
 
     checkCount: function () {
-      if (App.chosenStates.models.length > 4) {
+      if ( App.chosenStates.ready()) {
         this.$('.next').removeClass('hidden');
       } else {
         this.$('.next').addClass('hidden');
@@ -70,12 +68,9 @@ module.exports = BaseView.extend({
     },
 
     getLegislators: function () {
-      var fetched = _.after(App.chosenStates.models.length, function () {
+      App.chosenStates.getLegislators( function () {
         window.location.hash = 'train';
-      })
-      _.each(App.chosenStates.models, function (model) {
-        model.getLegislators(fetched);
-      })
+      });
     },
 
     states: states
