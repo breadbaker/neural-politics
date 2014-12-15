@@ -4,9 +4,9 @@ var BaseView = require('base-view');
 var Handlebars = require('handlebars');
 var templates = require('templates')(Handlebars);
 
-var states = require('data/states');
+var StateModel = require('models/state-model');
 
-var ChosenStatesView = require('views/chosen-state-view');
+var states = require('data/states');
 
 module.exports = BaseView.extend({
     template: templates['states'],
@@ -18,12 +18,10 @@ module.exports = BaseView.extend({
     render: function () {
       this.$el.html(this.template());
       this.$('.states-map').html(this.mapTemplate());
-      this.chosenView.render();
       return this;
     },
 
     initialize: function () {
-      this.chosenView = new ChosenStatesView({chosenStates: App.chosenStates});
       return BaseView.prototype.initialize.apply(this, arguments);
     },
 
@@ -48,17 +46,15 @@ module.exports = BaseView.extend({
     },
 
     toggleState: function () {
-      App.chosenStates.toggleState(this.currentStateId);
-      this.checkCount();
-      this.chosenView.render();
-    },
-
-    checkCount: function () {
-      if ( App.chosenStates.ready()) {
-        this.$('.next').removeClass('hidden');
-      } else {
-        this.$('.next').addClass('hidden');
-      }
+      var model = new StateModel({
+            id: this.currentStateId
+        });
+      App.state = this.states[this.currentStateId];
+      model.fetch({
+        success: function () {
+          window.location.hash = 'view-legislators';
+        }
+      });
     },
 
     renderCurrentState: function () {

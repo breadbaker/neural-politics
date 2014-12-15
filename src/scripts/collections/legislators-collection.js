@@ -12,18 +12,5 @@ module.exports = BaseCollection.extend({
         });
 
         return data;
-    },
-
-    getTrainingLegislators: function () {
-        var trainingSet = [];
-        var models = _.shuffle(this.models);
-        var model;
-        _.times(8, function () {
-            model = models.pop();
-            this.remove(model);
-            trainingSet.push(model);
-        }, this);
-
-        return trainingSet;
     }
 })

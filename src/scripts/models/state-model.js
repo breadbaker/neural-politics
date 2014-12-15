@@ -22,6 +22,8 @@ module.exports = BaseModel.extend({
             legislators.push(legislator.$);
         });
 
+        App.legislators.reset();
+
         App.legislators.add(legislators);
 
         return {};

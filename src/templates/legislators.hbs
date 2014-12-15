@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-xs-2">
+        <a href="#chooseState" class="btn btn-success back">Back</a>
+
+        <h3>{{state}}</h3>
+        <div class="state-legislators-list">
+            {{#each legislators}}
+                <button data-name="{{firstlast}}" class=" btn btn-info">{{firstlast}}</button>
+            {{/each}}
+        </div>
+    </div>
+    <div class="col-xs-10 legislator">
+    </div>
+</div>

@@ -8,26 +8,33 @@ var contribPie = require('lib/contrib-pie');
 var industryPie = require('lib/industry-pie');
 var rangeItems = require('lib/range-item');
 
+
+var states = require('data/states');
+
 module.exports = BaseView.extend({
-    template: templates['train'],
+    template: templates['legislators'],
 
     legislatorTemplate: templates['legislator'],
 
     render: function () {
-      this.$el.html(this.template());
+      this.$el.html(this.template({
+        legislators: App.legislators.toJSON(),
+        state: App.state
+      }));
       this.renderLegislator();
 
       return this;
     },
 
     initialize: function () {
-      this.legislators = App.legislators.getTrainingLegislators();
-      this.legislator = this.legislators.pop();
+      this.legislator = App.legislators.at(0);
       return BaseView.prototype.initialize.apply(this, arguments);
     },
 
     renderLegislator: function () {
       var that = this;
+      this.$('.state-legislators-list button').removeClass('active');
+      this.$('button[data-name="'+ this.legislator.get('firstlast') + '"]').addClass('active');
       this.legislator.fetch({
         success: function () {
           that.$('.legislator').html(that.legislatorTemplate(that.legislator.toJSON()));
@@ -48,30 +55,13 @@ module.exports = BaseView.extend({
     rangeItems: rangeItems,
 
     events: {
-      'click .like':'likeLegislator',
-      'click .dislike': 'dislikeLegislator'
+      'click button[data-name]': 'viewLegislator'
     },
 
-    likeLegislator: function () {
-      this.setPreference(true);
-    },
-
-    dislikeLegislator: function () {
-      this.setPreference(false);
-    },
-
-    setPreference: function (liked) {
-      this.legislator.set({
-        liked: liked
+    viewLegislator: function (e) {
+      this.legislator = App.legislators.findWhere({
+        firstlast: $(e.currentTarget).data('name')
       });
-      this.moveNext();
-    },
-
-    moveNext: function () {
-      if (!this.legislators.length) {
-        App.trainNetwork();
-      }
-      this.legislator = this.legislators.pop();
       this.renderLegislator();
     }
 });

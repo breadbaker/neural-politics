@@ -12,10 +12,13 @@ module.exports = BaseModel.extend({
         if (!json.net_high) {
             return false;
         }
-
-        json.assets = _.map(data.assets[0].asset, function (item) {
-            return item.$;
-        });
+        if (data.assets) {
+            json.assets = _.map(data.assets[0].asset, function (item) {
+                return item.$;
+            });
+        } else {
+            json.assets = [];
+        }
         return json;
     },
 
