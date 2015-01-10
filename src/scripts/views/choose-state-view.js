@@ -50,8 +50,10 @@ module.exports = BaseView.extend({
             id: this.currentStateId
         });
       App.state = this.states[this.currentStateId];
+      App.load();
       model.fetch({
         success: function () {
+          App.stopLoad();
           window.location.hash = 'view-legislators';
         }
       });

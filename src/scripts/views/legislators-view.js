@@ -35,6 +35,7 @@ module.exports = BaseView.extend({
       var that = this;
       this.$('.state-legislators-list button').removeClass('active');
       this.$('button[data-name="'+ this.legislator.get('firstlast') + '"]').addClass('active');
+      App.load();
       this.legislator.fetch({
         success: function () {
           that.$('.legislator').html(that.legislatorTemplate(that.legislator.toJSON()));
@@ -44,6 +45,8 @@ module.exports = BaseView.extend({
             // selector: '.contrib-pie',
             placement: 'top'
           });
+
+          App.stopLoad();
 
           // that.rangeItems(that.legislator.get('profile').rangeItems());
         },
