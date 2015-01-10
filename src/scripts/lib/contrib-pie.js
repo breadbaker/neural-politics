@@ -8,7 +8,7 @@ module.exports = function (data) {
         //     outerRadius: data.total / 1200
         // },
         chart: {
-            height:data.total / 800
+            height: 260
         },
         legend: {
             vAlign: 'top'

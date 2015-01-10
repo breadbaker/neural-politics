@@ -40,7 +40,12 @@ module.exports = BaseView.extend({
           that.$('.legislator').html(that.legislatorTemplate(that.legislator.toJSON()));
           that.contribPie(that.legislator.get('contributors').forContour());
           that.industryPie(that.legislator.get('industries').forContour());
-          that.rangeItems(that.legislator.get('profile').rangeItems());
+          $('[data-toggle="popover"]').popover({
+            // selector: '.contrib-pie',
+            placement: 'top'
+          });
+
+          // that.rangeItems(that.legislator.get('profile').rangeItems());
         },
         error: function () {
           that.moveNext();

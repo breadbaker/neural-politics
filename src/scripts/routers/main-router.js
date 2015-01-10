@@ -5,6 +5,7 @@ var RouterBase = require('./router-base');
 var ChooseStateView = require('views/choose-state-view');
 
 var LegislatorsView = require('views/legislators-view');
+var StateModel = require('models/state-model');
 
 var ThanksView = require('views/thanks-view');
 

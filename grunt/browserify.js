@@ -120,7 +120,7 @@ module.exports = function (grunt) {
             'notify:build'
         ],
         options: {
-            debug: false
+            debug: true
         }
     });
 

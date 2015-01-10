@@ -79,48 +79,44 @@ templates["header"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"mai
 
 templates["legislator"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var stack1, helper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, functionType="function", lambda=this.lambda;
-  return "<div class=\"col-xs-5\">\n    <p class=\"basics\">\n        <img class=\"party-image\" src=\"/web/images/"
+  return "<div class=\"col-xs-12\">\n    <div class=\"basics row\">\n        <div class=\"item\">\n            <img class=\"party-image\" src=\"/web/images/"
     + escapeExpression(((helpers.partyImage || (depth0 && depth0.partyImage) || helperMissing).call(depth0, (depth0 != null ? depth0.party : depth0), {"name":"partyImage","hash":{},"data":data})))
-    + "\">\n        <span class=\"name\">"
+    + "\">\n            <span class=\"name\">"
     + escapeExpression(((helper = (helper = helpers.firstlast || (depth0 != null ? depth0.firstlast : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"firstlast","hash":{},"data":data}) : helper)))
-    + "</span>\n        <i class=\"gender fa fa-"
+    + "</span>\n            <i class=\"gender fa fa-"
     + escapeExpression(((helpers.getGender || (depth0 && depth0.getGender) || helperMissing).call(depth0, (depth0 != null ? depth0.gender : depth0), {"name":"getGender","hash":{},"data":data})))
-    + "\"></i>\n        <span class=\"state\">"
+    + "\"></i>\n            <span class=\"state\">"
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.summary : depth0)) != null ? stack1.state : stack1), depth0))
-    + "</span>\n    </p>\n    <div class=\"contact-info\">\n        <p class=\"header\">\n            Contact\n        </p>\n        <ul>\n            "
-    + escapeExpression(((helpers.item || (depth0 && depth0.item) || helperMissing).call(depth0, "Phone:", (depth0 != null ? depth0.phone : depth0), {"name":"item","hash":{},"data":data})))
-    + "\n            <li>\n                <span class=\"label\">Website</span>\n                <span class=\"value\">\n                    <a href=\""
+    + "</span>\n        </div>\n        <div class=\"item\">\n            <i class=\"phone fa fa-phone-square\"></i><span>"
+    + escapeExpression(((helper = (helper = helpers.phone || (depth0 != null ? depth0.phone : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"phone","hash":{},"data":data}) : helper)))
+    + "</span>\n        </div>\n        <div class=\"item\">\n            <a href=\""
     + escapeExpression(((helper = (helper = helpers.website || (depth0 != null ? depth0.website : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"website","hash":{},"data":data}) : helper)))
     + "\" target=\"_blank\">"
     + escapeExpression(((helper = (helper = helpers.website || (depth0 != null ? depth0.website : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"website","hash":{},"data":data}) : helper)))
-    + "</a>\n                </span>\n            </li>\n            <li>\n                <a href=\"https://www.facebook.com/"
+    + "</a>\n        </div>\n        <div class=\"item\">\n            <a href=\"https://www.facebook.com/"
     + escapeExpression(((helper = (helper = helpers.facebook_id || (depth0 != null ? depth0.facebook_id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"facebook_id","hash":{},"data":data}) : helper)))
-    + "\" target=\"_blank\">\n                    Facebook Page\n                </a>\n            </li>\n            <li>\n                <a href=\"https://twitter.com/"
+    + "\" target=\"_blank\"><i class=\"fa fa-facebook-square\"></i></a>\n        </div>\n        <div class=\"item\">\n            <a href=\"https://twitter.com/"
     + escapeExpression(((helper = (helper = helpers.twitter_id || (depth0 != null ? depth0.twitter_id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"twitter_id","hash":{},"data":data}) : helper)))
-    + "\" target=\"_blank\">\n                    Twitter Page\n                </a>\n            </li>\n\n        </ul>\n    </div>\n        \n    <div class=\"finance-range\"></div>\n\n    <p>Cash On Hand: "
-    + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, ((stack1 = (depth0 != null ? depth0.summary : depth0)) != null ? stack1.cash : stack1), {"name":"currency","hash":{},"data":data})))
-    + "</p>\n    <p>Debt: "
-    + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, ((stack1 = (depth0 != null ? depth0.summary : depth0)) != null ? stack1.debt : stack1), {"name":"currency","hash":{},"data":data})))
-    + "</p>\n    <p>First Elected: "
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.summary : depth0)) != null ? stack1.firstElected : stack1), depth0))
-    + "</p>\n    <p>Spent: "
-    + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, (depth0 != null ? depth0.spent : depth0), {"name":"currency","hash":{},"data":data})))
-    + "</p>\n</div>\n<div class=\"col-xs-7\">\n    <div class=\"row\">\n        <div class=\"col-xs-6\">\n\n            <h3>Contributors</h3>\n            <p>Total Contibutions: "
+    + "\" target=\"_blank\"><i class=\"fa fa-twitter-square\"></i></a>\n        </div>\n\n    </div>\n</div>\n<div class=\"col-xs-12\">\n    <div class=\"row\">\n        <div class=\"col-xs-6\">\n\n            <h3>Contributors</h3>\n            <p>Total Contibutions: "
     + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, (depth0 != null ? depth0.contributorsTotal : depth0), {"name":"currency","hash":{},"data":data})))
-    + "</p>\n            <div class=\"contrib-pie\">\n            </div>\n        </div>\n        <div class=\"col-xs-6\">\n\n            <p>Total In Industries: "
+    + "<i \n                data-trigger=\"focus\"\n                class=\"fa fa-question-circle\"\n                data-toggle=\"popover\"\n                title=\"Top Contributors\"\n                data-content=\"This is a distribution amoung the top contributors to "
+    + escapeExpression(((helper = (helper = helpers.firstlast || (depth0 != null ? depth0.firstlast : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"firstlast","hash":{},"data":data}) : helper)))
+    + ".  Hover over the pieces to reveal the backer.\"\n                tabindex=\"0\"\n                ></i></p>\n            <div class=\"contrib-pie\">\n            </div>\n        </div>\n        <div class=\"col-xs-6\">\n\n            <h3>Industries</h3>\n            <p>Total In Industries: "
     + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, (depth0 != null ? depth0.industriesTotal : depth0), {"name":"currency","hash":{},"data":data})))
-    + "</p>\n            <div class=\"industry-pie\">\n            </div>\n        </div>\n    </div>\n</div>\n\n\n";
+    + "<i \n                data-trigger=\"focus\"\n                class=\"fa fa-question-circle\"\n                data-toggle=\"popover\"\n                title=\"Top Industries\"\n                data-content=\"This is a distribution amoung the top industries that contribute to "
+    + escapeExpression(((helper = (helper = helpers.firstlast || (depth0 != null ? depth0.firstlast : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"firstlast","hash":{},"data":data}) : helper)))
+    + ".  Hover over the pieces to reveal the industry.\"\n                tabindex=\"0\"></i></p>\n            <div class=\"industry-pie\">\n            </div>\n        </div>\n    </div>\n</div>\n\n\n";
 },"useData":true});
 
 templates["legislators"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
   return "                <button data-name=\""
     + escapeExpression(((helper = (helper = helpers.firstlast || (depth0 != null ? depth0.firstlast : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"firstlast","hash":{},"data":data}) : helper)))
-    + "\" class=\" btn btn-info\">"
+    + "\" class=\" btn btn-link btn-info\">"
     + escapeExpression(((helper = (helper = helpers.firstlast || (depth0 != null ? depth0.firstlast : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"firstlast","hash":{},"data":data}) : helper)))
     + "</button>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div class=\"row\">\n    <div class=\"col-xs-2\">\n        <a href=\"#chooseState\" class=\"btn btn-success back\">Back</a>\n\n        <h3>"
+  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div class=\"row\">\n    <div class=\"col-xs-2\">\n        <a href=\"#chooseState\" class=\"back\"><p><i class=\"fa  fa-angle-double-left\"></i>Choose State</p></a>\n\n        <h3>"
     + escapeExpression(((helper = (helper = helpers.state || (depth0 != null ? depth0.state : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"state","hash":{},"data":data}) : helper)))
     + "</h3>\n        <div class=\"state-legislators-list\">\n";
   stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.legislators : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
