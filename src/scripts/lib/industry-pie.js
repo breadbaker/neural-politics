@@ -1,5 +1,15 @@
+
+var Handlebars = require('handlebars');
+var templates = require('templates')(Handlebars);
+
+var contribTemplate = templates['contributor'];
+
+var ContributorModel = require('models/contributor-model');
+
+var ContributorView = require('views/contributor-view');
+
 module.exports = function (data) {
-    new Contour({
+    var contour = new Contour({
         el: '.industry-pie',
         // pie: {
         //     piePadding: {
@@ -15,13 +25,20 @@ module.exports = function (data) {
         },
         tooltip: {
             formatter: function (d) {
-                return '<h4>' + d.data.x + '</h4><p>' + d3.format('%')(d.value) + '</p><p>' + d3.format('$,')(d.data.real) + '</p>';
+
+                return new Handlebars.SafeString(contribTemplate({
+                  name: d.data.x,
+                  proportion: d3.format('%')(d.value),
+                  amount: d3.format('$,')(d.data.real)
+                }));
             }
         }
     })
     .pie(data.series)
     .tooltip()
     .render();
+
+    var x;
 };
 
 Contour.export('rotateLabels', function (data, layer, options) {

@@ -37,6 +37,32 @@ templates["colors"] = Handlebars.template({"1":function(depth0,helpers,partials,
   return buffer + "        </div>\n\n        <div onclick=\"trainer.chooseColor('other');\">other</div>\n        <div id=\"training-buttons\">\n          <span class=\"pass-button button\" onclick=\"trainer.changeColor();\"\n                title=\"skip\">&rarr;</span>\n        </div>\n      <div id=\"test-box\">\n        <div id=\"test-button\" onclick=\"trainer.trainNetwork();\" class=\"button\">train neural network</div>\n        <div id=\"subtitle\"> You can train the network at any point, but the more\n        color selections you give it, the better.\n        </div>\n      </div>\n    </div>\n\n    <div id=\"progress-box\">\n      <div id=\"training-message\">\n        training network...\n      </div>\n      <div id=\"progress-bar\">\n        <div id=\"progress-completed\">\n        </div>\n      </div>\n   </div>\n\n    <div class=\"section\" id=\"testing-box\">\n      <div id=\"swatches\">\n          <div id=\"nn-swatch-box\" class=\"swatch-box\">\n            <div id=\"nn-swatch\" class=\"swatch\" onclick=\"tester.viewCode('nn');\"\n                 title=\"view neural network code\">\n              <div class=\"swatch-text\">your neural network</div>\n            </div>\n            <div class=\"view-code\" onclick=\"tester.viewCode('nn');\">code\n                <div class=\"view-code-arrow\">&#x25B6;</div>\n            </div>\n          </div>\n          <div id=\"wcag-swatch-box\" class=\"swatch-box\">\n          <div id=\"wcag-swatch\" class=\"swatch\"\n               onclick=\"tester.viewCode('wcag');\" title=\"view luminosity code\">\n          <div class=\"swatch-text\">luminosity algorithm</div>\n          </div>\n          <div class=\"view-code\" onclick=\"tester.viewCode('wcag')\">code\n              <div class=\"view-code-arrow\">&#x25B6;</div>\n            </div>\n          </div>\n        <div id=\"yiq-swatch-box\" class=\"swatch-box\">\n          <div id=\"yiq-swatch\" class=\"swatch\"\n               onclick=\"tester.viewCode('yiq');\" title=\"view yiq code\">\n               <div class=\"swatch-text\">YIQ formula</div>\n          </div>\n          <div class=\"view-code\" onclick=\"tester.viewCode('yiq')\">code\n              <div class=\"view-code-arrow\">&#x25B6;</div>\n            </div>\n        </div>\n      </div>\n      <div id=\"training-buttons\">\n        <span class=\"pass-button button\" onclick=\"tester.testRandom();\"\n              title=\"next color\">&rarr;</span>\n      </div>\n    </div>\n    <div id=\"code-box\">\n      <pre id=\"code\"></pre>\n    </div>";
 },"useData":true});
 
+templates["contrib-details"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  return "<div class=\"percent-holder\">\n    <div class=\"democrats percent-item\" data-label=\"Democrats\" data-percentage=\""
+    + escapeExpression(((helper = (helper = helpers.democrats || (depth0 != null ? depth0.democrats : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"democrats","hash":{},"data":data}) : helper)))
+    + "\"></div>\n    <div class=\"republicans percent-item\" data-label=\"Republicans\" data-percentage=\""
+    + escapeExpression(((helper = (helper = helpers.republicans || (depth0 != null ? depth0.republicans : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"republicans","hash":{},"data":data}) : helper)))
+    + "\"></div>\n</div>\n<p>\n    Total "
+    + escapeExpression(((helper = (helper = helpers.total || (depth0 != null ? depth0.total : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"total","hash":{},"data":data}) : helper)))
+    + "\n</p>\n<p> \n    Lobbying "
+    + escapeExpression(((helper = (helper = helpers.lobbying || (depth0 != null ? depth0.lobbying : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"lobbying","hash":{},"data":data}) : helper)))
+    + "\n</p>";
+},"useData":true});
+
+templates["contributor"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  return "<div class=\"contrib-tooltip\" data-contributor=\""
+    + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
+    + "\">\n    <h4 \n        class=\"contrib-link\">\n        "
+    + escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"name","hash":{},"data":data}) : helper)))
+    + "\n    </h4>\n    <p>\n        "
+    + escapeExpression(((helper = (helper = helpers.proportion || (depth0 != null ? depth0.proportion : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"proportion","hash":{},"data":data}) : helper)))
+    + "\n    </p>\n    <p>\n        "
+    + escapeExpression(((helper = (helper = helpers.amount || (depth0 != null ? depth0.amount : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"amount","hash":{},"data":data}) : helper)))
+    + "\n    </p>\n    <div class=\"contrib-view\"></div>\n</div>\n";
+},"useData":true});
+
 templates["currentState"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
   return "<p>"

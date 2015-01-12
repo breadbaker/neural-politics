@@ -8,7 +8,6 @@ var contribPie = require('lib/contrib-pie');
 var industryPie = require('lib/industry-pie');
 var rangeItems = require('lib/range-item');
 
-
 var states = require('data/states');
 
 module.exports = BaseView.extend({

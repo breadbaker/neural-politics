@@ -9,6 +9,7 @@ var LegislatorsCollection = require('collections/legislators-collection');
 function App() {
 }
 
+
 var opts = {
         lines: 17, // The number of lines to draw
         length: 0, // The length of each line
@@ -31,17 +32,21 @@ var opts = {
 App.prototype = _.extend(App.prototype, {
     initialize: function () {
         this.legislators = new LegislatorsCollection();
+        this.contributors = new Backbone.Collection();
         this.router = new MainRouter({});
-        this.spinner = new Spinner(opts)
+        this.spinner = new Spinner(opts);
     },
 
     load: function () {
-        var target = document.getElementById('foo');
+        var target = document.getElementById('spinner');
         this.spinner.spin(target);
+        $('#back-drop').show();
     },
 
     stopLoad: function () {
         this.spinner.stop();
+        $('#back-drop').hide();
+
     }
 });
 

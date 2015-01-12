@@ -15,5 +15,11 @@ module.exports = {
     },
     '/getProfile': function (req) {
         return baseUrl + "memPFDprofile&year=2010&cid=" + req.query.cid;
+    },
+    '/getOrgs': function (req) {
+        return baseUrl + "getOrgs&org=" + req.query.org;
+    },
+    '/orgSummary': function (req) {
+        return baseUrl + "orgSummary&id=" + req.query.id;
     }
 };
