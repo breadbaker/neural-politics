@@ -2,22 +2,6 @@ module.exports = function(Handlebars) {
 
 var templates = {};
 
-templates["colors"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
-  var lambda=this.lambda, escapeExpression=this.escapeExpression;
-  return "            <div class=\"col-xs-1\" style=\"background-color:"
-    + escapeExpression(lambda(depth0, depth0))
-    + ";\" data-color=\""
-    + escapeExpression(lambda(depth0, depth0))
-    + "\">"
-    + escapeExpression(lambda(depth0, depth0))
-    + "</div>\n";
-},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, buffer = " <div class=\"section\" id=\"training-box\">\n      <div class=\"section-header\">\n        Which one can you read more easily?\n      </div>\n        <div id=\"swatches\">\n            <div class=\"swatch-box\">\n            <div id=\"black-swatch\" class=\"swatch\" onclick=\"trainer.chooseColor('green');\">\n              <div class=\"swatch-text\">Green</div>\n            </div></div>\n        </div>\n        <div class=\"color-options row\">\n";
-  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.colors : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
-  if (stack1 != null) { buffer += stack1; }
-  return buffer + "        </div>\n\n        <div onclick=\"trainer.chooseColor('other');\">other</div>\n        <div id=\"training-buttons\">\n          <span class=\"pass-button button\" onclick=\"trainer.changeColor();\"\n                title=\"skip\">&rarr;</span>\n        </div>\n      <div id=\"test-box\">\n        <div id=\"test-button\" onclick=\"trainer.trainNetwork();\" class=\"button\">train neural network</div>\n        <div id=\"subtitle\"> You can train the network at any point, but the more\n        color selections you give it, the better.\n        </div>\n      </div>\n    </div>\n\n    <div id=\"progress-box\">\n      <div id=\"training-message\">\n        training network...\n      </div>\n      <div id=\"progress-bar\">\n        <div id=\"progress-completed\">\n        </div>\n      </div>\n   </div>\n\n    <div class=\"section\" id=\"testing-box\">\n      <div id=\"swatches\">\n          <div id=\"nn-swatch-box\" class=\"swatch-box\">\n            <div id=\"nn-swatch\" class=\"swatch\" onclick=\"tester.viewCode('nn');\"\n                 title=\"view neural network code\">\n              <div class=\"swatch-text\">your neural network</div>\n            </div>\n            <div class=\"view-code\" onclick=\"tester.viewCode('nn');\">code\n                <div class=\"view-code-arrow\">&#x25B6;</div>\n            </div>\n          </div>\n          <div id=\"wcag-swatch-box\" class=\"swatch-box\">\n          <div id=\"wcag-swatch\" class=\"swatch\"\n               onclick=\"tester.viewCode('wcag');\" title=\"view luminosity code\">\n          <div class=\"swatch-text\">luminosity algorithm</div>\n          </div>\n          <div class=\"view-code\" onclick=\"tester.viewCode('wcag')\">code\n              <div class=\"view-code-arrow\">&#x25B6;</div>\n            </div>\n          </div>\n        <div id=\"yiq-swatch-box\" class=\"swatch-box\">\n          <div id=\"yiq-swatch\" class=\"swatch\"\n               onclick=\"tester.viewCode('yiq');\" title=\"view yiq code\">\n               <div class=\"swatch-text\">YIQ formula</div>\n          </div>\n          <div class=\"view-code\" onclick=\"tester.viewCode('yiq')\">code\n              <div class=\"view-code-arrow\">&#x25B6;</div>\n            </div>\n        </div>\n      </div>\n      <div id=\"training-buttons\">\n        <span class=\"pass-button button\" onclick=\"tester.testRandom();\"\n              title=\"next color\">&rarr;</span>\n      </div>\n    </div>\n    <div id=\"code-box\">\n      <pre id=\"code\"></pre>\n    </div>";
-},"useData":true});
-
 templates["contrib-details"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
   return "<div class=\"percent-holder\">\n    <div class=\"democrats percent-item\" data-label=\"Democrats\" data-percentage=\""
