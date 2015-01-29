@@ -28,17 +28,4 @@ module.exports = BaseModel.extend({
 
         return {};
     }
-
-    // getLegislators: function (callback) {
-    //     var legislators = [];
-    //     $.post('/getLegislators', {
-    //         state: this.id
-    //     }, function (data) {
-    //         _.each(data.legislator, function (legislator) {
-    //             legislators.push(legislator.$);
-    //         });
-    //         App.legislators.add(legislators);
-    //         callback();
-    //     });
-    // }
 });
