@@ -8,7 +8,7 @@ module.exports = function (grunt) {
         {
             expand: true,
             cwd: 'src/',
-            src: ['*.html', 'training-worker.js'],
+            src: ['*.html'],
             dest: 'web'
         }
     ];

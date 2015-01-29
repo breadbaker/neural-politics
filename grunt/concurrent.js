@@ -8,17 +8,7 @@ module.exports = function (grunt) {
             tasks: [
                 'watch'
             ]
-        },
-
-        production: {
-            tasks: [
-                // 'less',
-                // 'uglify',
-                // 'browserify',
-                // 'copy'
-            ]
         }
-
     });
 
     return grunt;

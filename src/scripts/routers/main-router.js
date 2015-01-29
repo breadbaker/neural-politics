@@ -7,8 +7,6 @@ var ChooseStateView = require('views/choose-state-view');
 var LegislatorsView = require('views/legislators-view');
 var StateModel = require('models/state-model');
 
-var ThanksView = require('views/thanks-view');
-
 var __super__ = RouterBase.prototype;
 
 module.exports = RouterBase.extend({
@@ -37,27 +35,11 @@ module.exports = RouterBase.extend({
         this.showView(new LegislatorsView());
     },
 
-    test: function () {
-        var that = this;
-
-        this.showView(new TestView());
-    },
-
     initialize: function () {
         __super__.initialize.apply(this, arguments);
 
         Backbone.history.start();
 
         return this;
-    },
-
-    thanks: function () {
-        if (!App.legislators) {
-            window.location.hash = 'chooseState';
-            return;
-        }
-        var that = this;
-
-        this.showView(new ThanksView());
     }
 });
