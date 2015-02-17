@@ -22,7 +22,7 @@ module.exports = BaseModel.extend({
         }
     },
 
-    childModels: ['summary', 'contributors', 'profile', 'industries'],
+    childModels: ['summary', 'contributors', 'industries'],
 
     fetch: function (opt) {
         var success = _.after(this.childModels.length, opt.success);
