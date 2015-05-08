@@ -13,8 +13,7 @@
         <link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
     </head>
     <body>
-        <div id="content" class="container">
-        </div>
+        
         <div id="spinner"></div>
         <div id="back-drop"></div>
         <div class="wrapper">
@@ -22,20 +21,18 @@
 
         %PRODUCTION%
         <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.12/d3.min.js"></script>
-        <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/spin.js/2.0.1/spin.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/react.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/JSXTransformer.js"></script>
         %/PRODUCTION%
         %DEVELOPMENT%
-        <script type="text/javascript" src="web/scripts/vendor/development/jquery.js"></script>
-        <script type="text/javascript" src="web/scripts/vendor/development/lodash.js"></script>
-        <script type="text/javascript" src="web/scripts/vendor/development/backbone.js"></script>
-        <script type="text/javascript" src="web/scripts/vendor/development/d3.js"></script>
-        <script type="text/javascript" src="web/scripts/vendor/development/bootstrap.js"></script>
-        <script type="text/javascript" src="web/scripts/vendor/development/contour.js"></script>
-        <script type="text/javascript" src="web/scripts/vendor/development/spin.js"></script>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="bower_components/lodash/dist/lodash.js"></script>
+        <script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
+        <script type="text/javascript" src="bower_components/react/react.js"></script>
+        <script type="text/javascript" src="bower_components/react/JSXTransformer.js"></script>
+        <script type="text/javascript" src="bower_components/react-router/build/umd/ReactRouter.js"></script>
+        <script type="text/javascript" src="bower_components/react-inlinesvg/standalone/react-inlinesvg.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
         %/DEVELOPMENT%
 
         <script type="text/javascript" src="web/scripts/app.min.js?v=%TIMESTAMP%"></script>

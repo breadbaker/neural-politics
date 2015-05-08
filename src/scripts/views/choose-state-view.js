@@ -1,69 +1,47 @@
 'use strict';
-var BaseView = require('base-view');
 
-var Handlebars = require('handlebars');
-var templates = require('templates')(Handlebars);
+module.exports = React.createClass({
 
-var StateModel = require('models/state-model');
-
-var states = require('data/states');
-
-module.exports = BaseView.extend({
-    template: templates['states'],
-
-    mapTemplate: templates['states-map'],
-
-    currentStateTemplate: templates['currentState'],
-
-    render: function () {
-        this.$el.html(this.template());
-        this.$('.states-map').html(this.mapTemplate());
-        return this;
+    defaultProps: {
+        currentStateId: 'aoeu'
     },
 
-    initialize: function () {
-        return BaseView.prototype.initialize.apply(this, arguments);
+    chooseState: function () {
+        window.location.hash = 'view-legislators?state=' + this.state.currentStateId;
     },
 
-    events: {
-        'mouseenter .land':'hoverState',
-        'click .land':'toggleState',
-        'click .next': 'getLegislators'
-    },
+    addListeners: function () {
+        var $land = $(this.getDOMNode()).find('.land');
 
-    renderChosen: function () {
-        this.$('.land').removeClass('chosen');
-
-        _.each(this.chosenStates.models, function (model) {
-            this.$('#US-' + model.id).addClass('chosen');
-        }, this);
+        $land.on('mouseenter', this.hoverState);
+        $land.on('click', this.chooseState);
     },
 
     hoverState: function (e) {
-        this.currentStateId = $(e.currentTarget).attr('id').replace('US-','');
-        this.currentState = this.states[this.currentStateId];
-        this.renderCurrentState();
+        this.currentStateId = $(e.currentTarget).attr('id').replace('US-','').split('_')[0];
+
+        this.setState({ currentStateId: this.currentStateId });
     },
 
-    toggleState: function () {
-        var model = new StateModel({
-            id: this.currentStateId
-        });
-        App.state = this.states[this.currentStateId];
-        App.load();
-        model.fetch({
-            success: function () {
-                App.stopLoad();
-                window.location.hash = 'view-legislators';
-            }
-        });
-    },
-
-    renderCurrentState: function () {
-        this.$('.current-state').html(this.currentStateTemplate({
-            state: this.currentState
-        }));
-    },
-
-    states: states
+    render: function () {
+        return (
+            <div>
+                <div class="states row">
+                    <div class="col-xs-12">
+                        <p> 
+                            Pick a state and view the legislators
+                        </p>
+                        <div>
+                            <p>{ this.currentStateId }</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="states-map">
+                            <ReactInlineSVG onLoad={ this.addListeners } src="/web/images/usaLow.svg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 });

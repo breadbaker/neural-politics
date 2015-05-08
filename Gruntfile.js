@@ -10,7 +10,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('dev', [
         'clean',
-        'handlebars',
         'less:dev',
         'uglify:dev',
         'browserify:dev',
@@ -21,7 +20,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'clean',
-        'handlebars',
         'less:dev',
         'uglify:dev',
         'browserify:dev',
@@ -30,7 +28,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('production', [
         'clean',
-        'handlebars',
         'less:prod',
         'uglify:prod',
         'browserify:prod',

@@ -27,6 +27,7 @@ app.get('/', function(req, res) {
 });
 
 app.use('/web',express.static(__dirname + '/web'));
+app.use('/bower_components',express.static(__dirname + '/bower_components'));
 
 var port = Number(process.env.PORT || 5000);
 console.log('port', port);

@@ -1,7 +1,15 @@
-'use strict';
-// main entry point for the application
 
-var MainApp = require('./apps/main-app');
-window.App = new MainApp();
+// React.render(
+//   <CommentBox url="comments.json" pollInterval={2000} />,
+//   document.getElementById('content')
+// );
 
-App.initialize();
+var Items = require('./items');
+
+var routes = require('./router');
+
+ReactRouter.run(routes, ReactRouter.HistoryLocation, function (Handler) {
+  React.render(<Handler/>, document.body);
+});
+
+

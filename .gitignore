@@ -75,6 +75,7 @@ public/
 ###########
 web/
 src/static/scripts/templates.js
+bower_components/**
 
 secret.js
 

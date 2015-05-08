@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var minifyify = require('minifyify');
+var reactify = require('reactify'); 
 
 module.exports = function (grunt) {
     var scripts = grunt.config.get('scripts');
@@ -19,9 +20,7 @@ module.exports = function (grunt) {
 
     var appOptions = {
         alias: [
-            'src/scripts/views/base-view.js:base-view',
-            'src/scripts/models/base-model.js:base-model',
-            'src/scripts/templates.js:templates'
+            'src/scripts/models/base-model.js:base-model'
         ],
         aliasMappings: [
             {
@@ -81,7 +80,8 @@ module.exports = function (grunt) {
 
     grunt.config.set('browserify', {
         options: {
-            debug: true
+            debug: true,
+            transform: [reactify]
         },
 
         app_dev: {
