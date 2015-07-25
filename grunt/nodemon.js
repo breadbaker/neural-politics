@@ -10,13 +10,7 @@ module.exports = function (grunt) {
       server: {
         script: 'index.js',
         options: {
-          args: ['dev'],
           nodeArgs: ['--debug'],
-          callback: function (nodemon) {
-            nodemon.on('log', function (event) {
-              console.log(event.colour);
-            });
-          },
           watch: ['api'],
         }
       }
