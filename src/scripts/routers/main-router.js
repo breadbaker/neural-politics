@@ -5,6 +5,7 @@ var RouterBase = require('./router-base');
 var ChooseStateView = require('views/choose-state-view');
 
 var LegislatorsView = require('views/legislators-view');
+var LegislatorView = require('views/legislator-view');
 var StateModel = require('models/state-model');
 
 var __super__ = RouterBase.prototype;
@@ -14,7 +15,8 @@ module.exports = RouterBase.extend({
     routes: {
         '': 'chooseState',
         'chooseState': 'chooseState',
-        'view-legislators': 'viewLegislators'
+        'view-legislators': 'viewLegislators',
+        'legislator/:name': 'viewLegislator'
     },
 
     chooseState: function () {
@@ -33,6 +35,10 @@ module.exports = RouterBase.extend({
         var that = this;
 
         this.showView(new LegislatorsView());
+    },
+
+    viewLegislator: function () {
+        this.showView(new LegislatorView());
     },
 
     initialize: function () {
