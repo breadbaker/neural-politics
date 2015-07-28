@@ -7,6 +7,7 @@ var ChooseStateView = require('views/choose-state-view');
 var LegislatorsView = require('views/legislators-view');
 var LegislatorView = require('views/legislator-view');
 var StateModel = require('models/state-model');
+var states = require('data/states');
 
 var __super__ = RouterBase.prototype;
 
@@ -15,8 +16,25 @@ module.exports = RouterBase.extend({
     routes: {
         '': 'chooseState',
         'chooseState': 'chooseState',
+        'states/:state': 'viewState',
         'view-legislators': 'viewLegislators',
-        'legislator/:name': 'viewLegislator'
+        'legislator/:state/:name': 'viewLegislator'
+    },
+
+    viewState: function (state) {
+        var model = new StateModel({
+            id: state
+        });
+        App.stateId = state;
+        App.state = states[this.currentStateId];
+        App.load();
+        var that = this;
+        model.fetch({
+            success: function () {
+                App.stopLoad();
+                that.showView(new LegislatorsView());
+            }
+        });
     },
 
     chooseState: function () {
@@ -37,8 +55,28 @@ module.exports = RouterBase.extend({
         this.showView(new LegislatorsView());
     },
 
-    viewLegislator: function () {
-        this.showView(new LegislatorView());
+    viewLegislator: function (stateId, name) {
+        if (App.stateId == stateId) {
+            App.legislator = App.legislators.findWhere({
+              firstlast: name
+            });
+            this.showView(new LegislatorView());
+        } else {
+            var model = new StateModel({
+                id: stateId
+            });
+            App.load();
+            var that = this;
+            model.fetch({
+                success: function () {
+                    App.stopLoad();
+                    App.legislator = App.legislators.findWhere({
+                      firstlast: name
+                    });
+                    that.showView(new LegislatorView());
+                }
+            });
+        }
     },
 
     initialize: function () {

@@ -1,18 +1,35 @@
 
 
 <div class="states row">
-    <div class="col-xs-12">
-        <p> 
-            Pick a state and view the legislators
-        </p>
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <div class="row">
+            <div class="col-xs-6">
+                <p> 
+                    Choose a state to view legislators
+                </p>
+            </div>
+            <div class="col-xs-6 text-right">
+                <button class="btn btn-primary view-toggle hide view-list">View states as list</button>
+                <button class="btn btn-primary view-toggle view-map">View states map</button>
+            </div>
+        </div>
         <div class="current-state">
         </div>
     </div>
-    <div class="col-xs-12">
-        <div class="states-map">
+
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <div class="row states-list view-toggle">
+            {{#each states}}
+                <div class="col-xs-1 state-holder">
+                    <a href="#states/{{this}}">
+                        <div class="state">
+                            {{this}}
+                        </div>
+                    </a>
+                </div>
+            {{/each}}
+        </div>
+        <div class="states-map hide view-toggle">
         </div>
     </div>
 </div>
-<button class="next hidden btn btn-success">
-    Next
-</button>

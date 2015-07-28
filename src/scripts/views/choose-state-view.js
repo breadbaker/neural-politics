@@ -16,7 +16,10 @@ module.exports = BaseView.extend({
     currentStateTemplate: templates['currentState'],
 
     render: function () {
-        this.$el.html(this.template());
+        var statesIds = Object.keys(states);
+        this.$el.html(this.template({
+            states: statesIds
+        }));
         this.$('.states-map').html(this.mapTemplate());
         return this;
     },
@@ -28,7 +31,13 @@ module.exports = BaseView.extend({
     events: {
         'mouseenter .land':'hoverState',
         'click .land':'toggleState',
-        'click .next': 'getLegislators'
+        'click .next': 'getLegislators',
+        'click button.view-toggle': 'toggleViewType',
+        'click .state': 'chooseStateFromList'
+    },
+
+    toggleViewType: function () {
+        this.$('.view-toggle').toggleClass('hide');
     },
 
     renderChosen: function () {
@@ -46,17 +55,7 @@ module.exports = BaseView.extend({
     },
 
     toggleState: function () {
-        var model = new StateModel({
-            id: this.currentStateId
-        });
-        App.state = this.states[this.currentStateId];
-        App.load();
-        model.fetch({
-            success: function () {
-                App.stopLoad();
-                window.location.hash = 'view-legislators';
-            }
-        });
+        window.location.hash = '#states/' + this.currentStateId;
     },
 
     renderCurrentState: function () {

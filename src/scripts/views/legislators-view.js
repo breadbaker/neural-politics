@@ -10,7 +10,8 @@ module.exports = BaseView.extend({
     render: function () {
         this.$el.html(this.template({
             legislators: App.legislators.toJSON(),
-            state: App.state
+            state: App.state,
+            stateId: App.stateId
         }));
 
         return this;

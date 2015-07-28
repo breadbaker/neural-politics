@@ -1,8 +1,26 @@
 <div class="row">
-    <div class="col-xs-2">
-        <a href="#chooseState" class="back"><p><i class="fa  fa-angle-double-left"></i>Choose State</p></a>
-
-        <h3>{{state}}</h3>
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <div class="row">
+            <div class="col-xs-6 text-right">
+                <a href="#chooseState" class="btn btn-link btn-primary">
+                    <i class="fa  fa-angle-double-left"></i>Back
+                </a>
+            </div>
+        </div>
+        <div class="row text-center">
+            <h3>{{state}}</h3>
+        </div>
+        <div class="row">
+            {{#each legislators}}
+                <div class="legislator-holder col-xs-2">
+                    <a href="#legislator/{{../stateId}}/{{firstlast}}">
+                        <div class="legislator">
+                            {{firstlast}}
+                        </div>
+                    </a>
+                </div>
+            {{/each}}
+        </div>
         <div class="state-legislators-list">
             {{#each legislators}}
                 <button data-name="{{firstlast}}" class=" btn btn-link btn-info">{{firstlast}}</button>
