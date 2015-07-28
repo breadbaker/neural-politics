@@ -72,26 +72,18 @@ templates["legislators"] = Handlebars.template({"1":function(depth0,helpers,part
     + escapeExpression(lambda((depths[1] != null ? depths[1].stateId : depths[1]), depth0))
     + "/"
     + escapeExpression(((helper = (helper = helpers.firstlast || (depth0 != null ? depth0.firstlast : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"firstlast","hash":{},"data":data}) : helper)))
-    + "\">\r\n                        <div class=\"legislator\">\r\n                            "
-    + escapeExpression(((helper = (helper = helpers.firstlast || (depth0 != null ? depth0.firstlast : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"firstlast","hash":{},"data":data}) : helper)))
-    + "\r\n                        </div>\r\n                    </a>\r\n                </div>\r\n";
-},"3":function(depth0,helpers,partials,data) {
-  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "                <button data-name=\""
-    + escapeExpression(((helper = (helper = helpers.firstlast || (depth0 != null ? depth0.firstlast : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"firstlast","hash":{},"data":data}) : helper)))
-    + "\" class=\" btn btn-link btn-info\">"
-    + escapeExpression(((helper = (helper = helpers.firstlast || (depth0 != null ? depth0.firstlast : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"firstlast","hash":{},"data":data}) : helper)))
-    + "</button>\r\n";
+    + "\">\r\n                        <div class=\"legislator\">\r\n                            <img class=\""
+    + escapeExpression(((helper = (helper = helpers.party || (depth0 != null ? depth0.party : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"party","hash":{},"data":data}) : helper)))
+    + "\" src=\"web/images/profile.png\">\r\n                            <span>\r\n                            "
+    + escapeExpression(((helper = (helper = helpers.shortName || (depth0 != null ? depth0.shortName : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"shortName","hash":{},"data":data}) : helper)))
+    + "\r\n                            </span>\r\n                        </div>\r\n                    </a>\r\n                </div>\r\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data,depths) {
-  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div class=\"row\">\r\n    <div class=\"col-xs-12 col-md-10 col-md-offset-1\">\r\n        <div class=\"row\">\r\n            <div class=\"col-xs-6 text-right\">\r\n                <a href=\"#chooseState\" class=\"btn btn-link btn-primary\">\r\n                    <i class=\"fa  fa-angle-double-left\"></i>Back\r\n                </a>\r\n            </div>\r\n        </div>\r\n        <div class=\"row text-center\">\r\n            <h3>"
+  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "<div class=\"row\">\r\n    <div class=\"col-xs-12 col-md-10 col-md-offset-1\">\r\n        <div class=\"row\">\r\n            <div class=\"col-xs-12 text-right\">\r\n                <a href=\"#chooseState\" class=\"btn btn-link btn-primary\">\r\n                    <i class=\"fa  fa-angle-double-left\"></i>Back\r\n                </a>\r\n            </div>\r\n        </div>\r\n        <div class=\"row text-center\">\r\n            <h3>"
     + escapeExpression(((helper = (helper = helpers.state || (depth0 != null ? depth0.state : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"state","hash":{},"data":data}) : helper)))
-    + "</h3>\r\n        </div>\r\n        <div class=\"row\">\r\n";
+    + "</h3>\r\n        </div>\r\n        <div class=\"row legislators-list\">\r\n";
   stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.legislators : depth0), {"name":"each","hash":{},"fn":this.program(1, data, depths),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
-  buffer += "        </div>\r\n        <div class=\"state-legislators-list\">\r\n";
-  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.legislators : depth0), {"name":"each","hash":{},"fn":this.program(3, data, depths),"inverse":this.noop,"data":data});
-  if (stack1 != null) { buffer += stack1; }
-  return buffer + "        </div>\r\n    </div>\r\n    <div class=\"col-xs-10 legislator\">\r\n    </div>\r\n</div>";
+  return buffer + "        </div>\r\n    </div>\r\n</div>";
 },"useData":true,"useDepths":true});
 
 templates["states-map"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {

@@ -18,8 +18,11 @@ module.exports = BaseModel.extend({
     parse: function (data) {
         var legislators = [];
 
+        var data;
         _.each(data.legislator, function (legislator) {
-            legislators.push(legislator.$);
+            data = legislator.$;
+            data.shortName = data.firstlast.split(' ')[0][0] + '. ' + data.lastname;
+            legislators.push(data);
         });
 
         App.legislators.reset();
