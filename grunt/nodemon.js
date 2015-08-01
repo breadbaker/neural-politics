@@ -11,7 +11,7 @@ module.exports = function (grunt) {
         script: 'index.js',
         options: {
           nodeArgs: ['--debug'],
-          watch: ['api'],
+          watch: ['api', 'index.js'],
         }
       }
     });
