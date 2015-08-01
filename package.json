@@ -35,7 +35,8 @@
     "jquery": "^2.1.0",
     "lodash": "^2.4.1",
     "minifyify": "^4.4.0",
-    "time-grunt": "^0.2.9"
+    "time-grunt": "^0.2.9",
+    "twitter": "1.2.1"
   },
   "scripts": {
     "postinstall": "echo postinstall time; ./node_modules/grunt-cli/bin/grunt"
