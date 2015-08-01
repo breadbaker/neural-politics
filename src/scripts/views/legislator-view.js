@@ -4,8 +4,8 @@ var BaseView = require('base-view');
 var Handlebars = require('handlebars');
 var templates = require('templates')(Handlebars);
 
-var contribPie = require('lib/contrib-pie');
-var industryPie = require('lib/industry-pie');
+var contribBar = require('lib/contrib-bar');
+var industryBar = require('lib/industry-bar');
 
 var states = require('data/states');
 
@@ -19,12 +19,14 @@ module.exports = BaseView.extend({
         App.legislator.fetch({
         success: function () {
                 that.$el.html(that.legislatorTemplate(App.legislator.toJSON()));
-                that.contribPie(App.legislator.get('contributors').forContour());
-                that.industryPie(App.legislator.get('industries').forContour());
+                that.contribBar(App.legislator.get('contributors').forContour());
+                that.industryBar(App.legislator.get('industries').forContour());
                 $('[data-toggle="popover"]').popover({
                     placement: 'top'
                 });
+                that.contributorView = new ContributorView(App.legislator.get('contributors').forContour());
 
+                that.renderContributorView();
                 App.stopLoad();
             },
             error: function () {
@@ -33,7 +35,13 @@ module.exports = BaseView.extend({
         });
     },
 
-    contribPie: contribPie,
+    renderContributorView: function () {
+        this.con
+    },
 
-    industryPie: industryPie
+    contribBar: contribBar,
+
+    industryBar: industryBar,
+
+
 });

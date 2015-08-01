@@ -1,38 +1,41 @@
 
+.legislator-holder {
+    padding: 5px;
+    .legislator {
+        padding: 15px;
+        text-align: center;
+        font-size: 16px;
+        img {
+            width: 90%;
+            border: 2px solid green;
+        }
+        img.R {
+            border-color: red;
+        }
+
+        img.D {
+            border-color: blue;
+        }
+        span {
+         white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 90%;
+        }
+    }
+    .legislator:hover {
+        cursor: pointer;
+    }
+}
 .legislators-list {
     margin-bottom: 80px;
-    .legislator-holder {
-        padding: 5px;
-        .legislator {
-            padding: 15px;
-            text-align: center;
-            font-size: 16px;
-            img {
-                width: 90%;
-                border: 2px solid green;
-            }
-            img.R {
-                border-color: red;
-            }
 
-            img.D {
-                border-color: blue;
-            }
-            span {
-             white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              max-width: 90%;
-            }
-        }
-        .legislator:hover {
-            cursor: pointer;
-        }
+    .legislator {
+        margin-top: 40px;
     }
 }
 
 .legislator {
-    margin-top: 40px;
     .name {
         text-decoration: underline;
         font-size: 22px;
