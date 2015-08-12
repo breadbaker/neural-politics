@@ -10,5 +10,6 @@ module.exports = function (data) {
     })
     .cartesian()
     .column(data.series)
+    .statictip(data.contributorModel)
     .render();
 };

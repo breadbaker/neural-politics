@@ -9,13 +9,19 @@ require('lib/jquery.percent-item');
 module.exports = BaseView.extend({
     template: templates['contrib-details'],
 
-    el: '.contrib-details',
+    initialize: function () {
+        BaseView.prototype.initialize.apply(this, arguments);
+
+        this.listenTo(this.model, 'change', this.render.bind(this));
+
+        return this;
+    },
 
     render: function () {
         var that = this;
 
         this.model.getDetails( function () {
-            that.$el.html(that.template(that.model.details.toJSON()));
+            that.$el.html(that.template(that.model.toJSON()));
 
             that.$('.percent-item').percentize();
         });

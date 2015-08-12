@@ -30,7 +30,7 @@ var addProfiles = function (data, callback) {
     _.each(data.legislator, function (legislator) {
         client.get('users/show', { screen_name: legislator.$.twitter_id }, function (error, profile, response) {
             console.log(profile);
-            legislator.$.profileImage = profile['profile_image_url'].replace('_normal.jpeg', '_400x400.jpeg');
+            legislator.$.profileImage = profile['profile_image_url'].replace('_normal', '_400x400');
             done();
         });
     })
@@ -41,7 +41,6 @@ _.each(urlMap, function( fn, key) {
         db.search(req, function (err, doc) {
             if (!doc) {
                 var url = urlMap[req.path](req);
-
                 openSecret(url, function (data) {
                     var done = function () {
                         db.save(req, JSON.stringify(data), function () {

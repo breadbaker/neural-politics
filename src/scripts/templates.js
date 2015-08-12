@@ -4,14 +4,22 @@ var templates = {};
 
 templates["contrib-details"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "<div class=\"percent-holder\">\r\n    <div class=\"democrats percent-item\" data-label=\"Democrats\" data-percentage=\""
+  return "<p class=\"contrib-title\">\r\n    "
+    + escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"id","hash":{},"data":data}) : helper)))
+    + "<a href=\"https://www.google.com/#safe=on&q="
+    + escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"id","hash":{},"data":data}) : helper)))
+    + "\" target=\"_blank\"><i class=\"fa fa-search\"></i></a><span class=\"percent\">- "
+    + escapeExpression(((helpers.formatPercent || (depth0 && depth0.formatPercent) || helperMissing).call(depth0, (depth0 != null ? depth0.proportion : depth0), {"name":"formatPercent","hash":{},"data":data})))
+    + "</span>\r\n</p>\r\n<p class=\"contrib-total\">\r\n    "
+    + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, (depth0 != null ? depth0.amount : depth0), {"name":"currency","hash":{},"data":data})))
+    + "\r\n</p>\r\n<div class=\"percent-holder\">\r\n    <div class=\"democrats percent-item\" data-label=\"Democrats\" data-percentage=\""
     + escapeExpression(((helper = (helper = helpers.democrats || (depth0 != null ? depth0.democrats : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"democrats","hash":{},"data":data}) : helper)))
     + "\"></div>\r\n    <div class=\"republicans percent-item\" data-label=\"Republicans\" data-percentage=\""
     + escapeExpression(((helper = (helper = helpers.republicans || (depth0 != null ? depth0.republicans : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"republicans","hash":{},"data":data}) : helper)))
     + "\"></div>\r\n</div>\r\n<p>\r\n    Total "
-    + escapeExpression(((helper = (helper = helpers.total || (depth0 != null ? depth0.total : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"total","hash":{},"data":data}) : helper)))
+    + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, (depth0 != null ? depth0.total : depth0), {"name":"currency","hash":{},"data":data})))
     + "\r\n</p>\r\n<p> \r\n    Lobbying "
-    + escapeExpression(((helper = (helper = helpers.lobbying || (depth0 != null ? depth0.lobbying : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"lobbying","hash":{},"data":data}) : helper)))
+    + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, (depth0 != null ? depth0.lobbying : depth0), {"name":"currency","hash":{},"data":data})))
     + "\r\n</p>";
 },"useData":true});
 
@@ -36,34 +44,32 @@ templates["currentState"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"
 },"useData":true});
 
 templates["legislator"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, helper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, functionType="function", lambda=this.lambda;
-  return "<div class=\"col-xs-12\">\r\n    <div class=\"basics row\">\r\n        <div class=\"item\">\r\n            <img class=\"party-image\" src=\"/web/images/"
-    + escapeExpression(((helpers.partyImage || (depth0 && depth0.partyImage) || helperMissing).call(depth0, (depth0 != null ? depth0.party : depth0), {"name":"partyImage","hash":{},"data":data})))
-    + "\">\r\n            <span class=\"name\">"
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  return "<div class=\"col-xs-12 col-md-10 col-md-offset-1 leg-upper\">\r\n    <div class=\"basics row\">\r\n        <div class=\"col-xs-8\">\r\n            <div class=\"row\">\r\n                <div class=\"legislator-holder  col-xs-4 col-md-3\">\r\n                    <div class=\"legislator\">\r\n                        <img class=\""
+    + escapeExpression(((helper = (helper = helpers.party || (depth0 != null ? depth0.party : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"party","hash":{},"data":data}) : helper)))
+    + "\" src=\""
+    + escapeExpression(((helper = (helper = helpers.profileImage || (depth0 != null ? depth0.profileImage : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"profileImage","hash":{},"data":data}) : helper)))
+    + "\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-xs-7 col-md-8\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-xs-2 party "
+    + escapeExpression(((helper = (helper = helpers.party || (depth0 != null ? depth0.party : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"party","hash":{},"data":data}) : helper)))
+    + "\">\r\n                            "
+    + escapeExpression(((helper = (helper = helpers.party || (depth0 != null ? depth0.party : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"party","hash":{},"data":data}) : helper)))
+    + "\r\n                        </div>\r\n                        <div class=\"col-xs-10 name\">\r\n                            "
     + escapeExpression(((helper = (helper = helpers.firstlast || (depth0 != null ? depth0.firstlast : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"firstlast","hash":{},"data":data}) : helper)))
-    + "</span>\r\n            <i class=\"gender fa fa-"
-    + escapeExpression(((helpers.getGender || (depth0 && depth0.getGender) || helperMissing).call(depth0, (depth0 != null ? depth0.gender : depth0), {"name":"getGender","hash":{},"data":data})))
-    + "\"></i>\r\n            <span class=\"state\">"
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.summary : depth0)) != null ? stack1.state : stack1), depth0))
-    + "</span>\r\n        </div>\r\n        <div class=\"item\">\r\n            <i class=\"phone fa fa-phone-square\"></i><span>"
+    + "\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                        <div class=\"col-xs-7 website\">\r\n                            <i class=\"fa fa-at\"></i>"
+    + escapeExpression(((helper = (helper = helpers.website || (depth0 != null ? depth0.website : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"website","hash":{},"data":data}) : helper)))
+    + "\r\n                        </div>\r\n                        <div class=\"col-xs-5 phone\">\r\n                            <i class=\"fa fa-phone\"></i>"
     + escapeExpression(((helper = (helper = helpers.phone || (depth0 != null ? depth0.phone : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"phone","hash":{},"data":data}) : helper)))
-    + "</span>\r\n        </div>\r\n        <div class=\"item\">\r\n            <a href=\""
-    + escapeExpression(((helper = (helper = helpers.website || (depth0 != null ? depth0.website : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"website","hash":{},"data":data}) : helper)))
-    + "\" target=\"_blank\">"
-    + escapeExpression(((helper = (helper = helpers.website || (depth0 != null ? depth0.website : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"website","hash":{},"data":data}) : helper)))
-    + "</a>\r\n        </div>\r\n        <div class=\"item\">\r\n            <a href=\"https://www.facebook.com/"
-    + escapeExpression(((helper = (helper = helpers.facebook_id || (depth0 != null ? depth0.facebook_id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"facebook_id","hash":{},"data":data}) : helper)))
-    + "\" target=\"_blank\"><i class=\"fa fa-facebook-square\"></i></a>\r\n        </div>\r\n        <div class=\"item\">\r\n            <a href=\"https://twitter.com/"
-    + escapeExpression(((helper = (helper = helpers.twitter_id || (depth0 != null ? depth0.twitter_id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"twitter_id","hash":{},"data":data}) : helper)))
-    + "\" target=\"_blank\"><i class=\"fa fa-twitter-square\"></i></a>\r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n<div class=\"col-xs-12\">\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n\r\n            <h3>Top Contributors</h3>\r\n            <p>Total From Top Contibutions: "
+    + "\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"col-xs-4 text-right assumed\">\r\n            Assumed Office in "
+    + escapeExpression(((helper = (helper = helpers.first_elected || (depth0 != null ? depth0.first_elected : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"first_elected","hash":{},"data":data}) : helper)))
+    + "\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"col-xs-12 col-md-10 col-md-offset-1 leg-lower\">\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n\r\n            <h3>Top Contributors ( total: "
     + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, (depth0 != null ? depth0.contributorsTotal : depth0), {"name":"currency","hash":{},"data":data})))
-    + "<i \r\n                data-trigger=\"focus\"\r\n                class=\"fa fa-question-circle\"\r\n                data-toggle=\"popover\"\r\n                title=\"Top Contributors\"\r\n                data-content=\"This is a distribution amoung the top contributors to "
+    + " )<i \r\n                data-trigger=\"focus\"\r\n                class=\"fa fa-question-circle\"\r\n                data-toggle=\"popover\"\r\n                title=\"Top Contributors\"\r\n                data-content=\"This is a distribution amoung the top contributors to "
     + escapeExpression(((helper = (helper = helpers.firstlast || (depth0 != null ? depth0.firstlast : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"firstlast","hash":{},"data":data}) : helper)))
-    + ". Hover over the pieces to reveal the backer.\"\r\n                tabindex=\"0\"\r\n                ></i></p>\r\n            <div class=\"contrib-pie\">\r\n            </div>\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n\r\n            <h3>Top Industries</h3>\r\n            <p>Total From Top Industries: "
+    + ". Hover over the pieces to reveal the backer.\"\r\n                tabindex=\"0\"\r\n                ></i></h3>\r\n            <div class=\"contrib-bar\">\r\n            </div>\r\n            <div class=\"contrib-details\">\r\n            </div>\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n\r\n            <h3>Top Industries (total: "
     + escapeExpression(((helpers.currency || (depth0 && depth0.currency) || helperMissing).call(depth0, (depth0 != null ? depth0.industriesTotal : depth0), {"name":"currency","hash":{},"data":data})))
-    + "<i \r\n                data-trigger=\"focus\"\r\n                class=\"fa fa-question-circle\"\r\n                data-toggle=\"popover\"\r\n                title=\"Top Industries\"\r\n                data-content=\"This is a distribution amoung the top industries that contribute to "
+    + " )<i \r\n                data-trigger=\"focus\"\r\n                class=\"fa fa-question-circle\"\r\n                data-toggle=\"popover\"\r\n                title=\"Top Industries\"\r\n                data-content=\"This is a distribution amoung the top industries that contribute to "
     + escapeExpression(((helper = (helper = helpers.firstlast || (depth0 != null ? depth0.firstlast : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"firstlast","hash":{},"data":data}) : helper)))
-    + ". Hover over the pieces to reveal the industry.\"\r\n                tabindex=\"0\"></i></p>\r\n            <div class=\"industry-pie\">\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n";
+    + ". Hover over the pieces to reveal the industry.\"\r\n                tabindex=\"0\"></i></h3>\r\n            <div class=\"industry-bar\">\r\n            </div>\r\n            <div class=\"industry-details\">\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n";
 },"useData":true});
 
 templates["legislators"] = Handlebars.template({"1":function(depth0,helpers,partials,data,depths) {
@@ -74,7 +80,9 @@ templates["legislators"] = Handlebars.template({"1":function(depth0,helpers,part
     + escapeExpression(((helper = (helper = helpers.firstlast || (depth0 != null ? depth0.firstlast : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"firstlast","hash":{},"data":data}) : helper)))
     + "\">\r\n                        <div class=\"legislator\">\r\n                            <img class=\""
     + escapeExpression(((helper = (helper = helpers.party || (depth0 != null ? depth0.party : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"party","hash":{},"data":data}) : helper)))
-    + "\" src=\"web/images/profile.png\">\r\n                            <span>\r\n                            "
+    + "\" src=\""
+    + escapeExpression(((helper = (helper = helpers.profileImage || (depth0 != null ? depth0.profileImage : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"profileImage","hash":{},"data":data}) : helper)))
+    + "\">\r\n                            <span>\r\n                            "
     + escapeExpression(((helper = (helper = helpers.shortName || (depth0 != null ? depth0.shortName : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"shortName","hash":{},"data":data}) : helper)))
     + "\r\n                            </span>\r\n                        </div>\r\n                    </a>\r\n                </div>\r\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data,depths) {

@@ -3,6 +3,7 @@
 var MainRouter = require('../routers/main-router');
 // No exports
 require('lib/handlebars-helpers');
+require('lib/static-tip');
 
 var LegislatorsCollection = require('collections/legislators-collection');
 

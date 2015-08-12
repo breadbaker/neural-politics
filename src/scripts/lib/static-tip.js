@@ -150,6 +150,8 @@
 
         this.svg.selectAll('.tooltip-tracker')
             .on('click.tooltip', clicked.bind(this))
+
+        clicked.call(this, this.dataSrc[0])
     }
 
     render.defaults = defaults;

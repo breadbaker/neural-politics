@@ -27,7 +27,7 @@ var typeMap = {
     '/getIndustries': 'cid',
     '/getProfile': 'cid',
     '/getOrgs': 'org',
-    '/orgSummary': 'org'
+    '/orgSummary': 'id'
 };
 module.exports = {
     search: function (req, callback) {

@@ -19,9 +19,7 @@ var ContribDetailsModel = BaseModel.extend({
 
 module.exports = BaseModel.extend({
     toJSON: function () {
-        return {
-            name: states[this.id]
-        };
+        return _.extend({},this.details.toJSON(), this.attributes);
     },
 
     url: function () {
@@ -38,6 +36,7 @@ module.exports = BaseModel.extend({
 
                 that.details.fetch({
                     success: function () {
+
                         App.stopLoad();
                         callback();
                     }
