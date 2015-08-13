@@ -45,15 +45,20 @@ _.each(urlMap, function( fn, key) {
             if (!doc) {
                 var url = urlMap[req.path](req);
                 openSecret(url, function (data) {
-                    var done = function () {
-                        db.save(req, JSON.stringify(data), function () {
-                            res.send(data);
-                        });
+                    try {
+                        var done = function () {
+                            db.save(req, JSON.stringify(data), function () {
+                                res.send(data);
+                            });
+                        }
+                        if (req.path === '/getLegislators') {
+                            addProfiles(data, done);
+                        } else {
+                            done();
+                        }
                     }
-                    if (req.path === '/getLegislators') {
-                        addProfiles(data, done);
-                    } else {
-                        done();
+                    catch (e) {
+                        res.status(403).send();
                     }
                 });
             } else {
