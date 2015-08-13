@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 var mongoUri = process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
-  'mongodb://localhost/polic2';
+  'mongodb://localhost/polic3';
 
 
 mongoose.connect(mongoUri);
