@@ -25,6 +25,14 @@ Handlebars.registerHelper({
         }));
     },
 
+    getImage: function (src) {
+        if (src) {
+            return src;
+        } else {
+            return '/web/images/profile.png';
+        }
+    },
+
     getGender: function (g) {
         return g === 'F' ? 'female' : 'male';
     },
