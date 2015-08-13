@@ -38,6 +38,7 @@ module.exports = BaseView.extend({
 
     toggleViewType: function () {
         this.$('.view-toggle').toggleClass('hide');
+        this.$('.current-state').addClass('hide');
     },
 
     renderChosen: function () {
@@ -52,6 +53,7 @@ module.exports = BaseView.extend({
         this.currentStateId = $(e.currentTarget).attr('id').replace('US-','');
         this.currentState = this.states[this.currentStateId];
         this.renderCurrentState();
+
     },
 
     toggleState: function () {
@@ -62,6 +64,7 @@ module.exports = BaseView.extend({
         this.$('.current-state').html(this.currentStateTemplate({
             state: this.currentState
         }));
+        this.$('.current-state').removeClass('hide');
     },
 
     states: states

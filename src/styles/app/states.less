@@ -1,10 +1,22 @@
+.view-toggle {
+      margin-right: -6px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 11px;
+}
+
 .states {
+      margin-bottom: 20px;
     .states-list {
         .state-holder {
-            padding: 5px;
+            a:hover, a:focus {
+                text-decoration: none;
+            }
+            width: 10%;
+            padding: 9px;
             .state {
                 background-color: rgb(181,225,182);
-                padding: 15px;
+                padding: 22px;
                 text-align: center;
                 color: white;
                 font-size: 22px;
@@ -37,14 +49,14 @@
         width: 75%;
         margin-left: 12.5%;
         .land {
-            fill: #466558;
+            fill: @base-green-dark;
             fill-opacity: 1;
             stroke:white;
             stroke-opacity: 1;
             stroke-width:0.5;
         }
         .land:hover {
-            fill: #BDB274;
+            fill: @base-green;
         }
 
         .chosen {

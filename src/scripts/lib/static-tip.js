@@ -78,7 +78,7 @@
             var positioner = {
                 'vertical': function verticalPositioner() {
                     var pos = {
-                        x: plotLeft + pointX + width, // - (distance + width / 2),
+                        x: plotLeft + pointX + width/2 + 6, // - (distance + width / 2),
                         y: plotTop + plotHeight + height + 300 // + pointY - (distance + height)
                     };
 
@@ -93,9 +93,11 @@
         var clicked = function (d) {
             data.set({
                 id: d.x,
-                amount: d.real,
                 proportion: d.y
             });
+            if (d.real) {
+                data.set('amount', d.real);
+            }
             show.call(this, d);
         };
 
@@ -151,6 +153,7 @@
         this.svg.selectAll('.tooltip-tracker')
             .on('click.tooltip', clicked.bind(this))
 
+            this.svg.select('rect.tooltip-tracker').attr('class', 'tooltip-tracker column selected');
         clicked.call(this, this.dataSrc[0])
     }
 

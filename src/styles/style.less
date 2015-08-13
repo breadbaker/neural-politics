@@ -18,12 +18,13 @@ header, footer {
   }
 }
 
-.btn-primary {
+.btn-primary , .btn-primary:focus {
   background-color: rgb(126,196,121);
   border-color: transparent;
+  outline: none;
 }
-.btn-primary:hover {
-  background-color: #72B06D;
+.btn-primary:hover{
+  background-color: @base-green-dark;
   border-color: transparent;
 }
 
@@ -38,15 +39,15 @@ header, footer {
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 7px solid @base-green;
+    border-bottom: 7px solid @green-highlight;
     border-radius: 0;
     background-color: transparent;
     padding: 0;
     margin-top: 21px;
   }
 }
-.contrib-details {
-  border-top: 5px solid @base-green;
+.contrib-details, .industry-details {
+  border-top: 5px solid @green-highlight;
   background-color: rgb(48, 48, 48);
   margin-right: 15px;
     color: white;
@@ -54,7 +55,14 @@ header, footer {
     padding-bottom: 10px;
   padding-left: 15px;
   margin-bottom: 15px;
-  font-size: 16px;
+  font-size: 20px;
+  .fa-search {
+      background-color: @base-green-dark;
+  padding: 6px;
+  margin: 8px;
+  border-radius: 5px;
+  color: white;
+  }
 }
 
 .x.axis, .y.axis {
@@ -229,4 +237,9 @@ body {
     color: rgb(106 ,179,100);
   stroke:rgb( 106,179,100);
   fill:rgb( 106,179,100);
+  .column.tooltip-tracker.selected {
+    color: @green-highlight;
+    fill: @green-highlight;
+    stroke: @green-highlight;
+  }
 }
