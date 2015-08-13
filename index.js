@@ -29,8 +29,11 @@ var addProfiles = function (data, callback) {
 
     _.each(data.legislator, function (legislator) {
         client.get('users/show', { screen_name: legislator.$.twitter_id }, function (error, profile, response) {
-            console.log(profile);
-            legislator.$.profileImage = profile['profile_image_url'].replace('_normal', '_400x400');
+            if (error) {
+                legislator.$.profileImage
+            } else {
+                legislator.$.profileImage = profile['profile_image_url'].replace('_normal', '_400x400');
+            }
             done();
         });
     })
