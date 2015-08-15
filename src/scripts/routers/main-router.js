@@ -1,5 +1,13 @@
 'use strict';
 
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-66377018-1', 'auto');
+ga('send', 'pageview', 'landing');
+
 var RouterBase = require('./router-base');
 
 var ChooseStateView = require('views/choose-state-view');
@@ -35,6 +43,7 @@ module.exports = RouterBase.extend({
                 that.showView(new LegislatorsView());
             }
         });
+        ga('send', 'pageview', 'state/'+ state);
     },
 
     chooseState: function () {
@@ -56,6 +65,8 @@ module.exports = RouterBase.extend({
     },
 
     viewLegislator: function (stateId, name) {
+        ga('send', 'pageview', 'state/'+ stateId + '/' + name);
+
         if (App.stateId == stateId) {
             App.legislator = App.legislators.findWhere({
               firstlast: name
