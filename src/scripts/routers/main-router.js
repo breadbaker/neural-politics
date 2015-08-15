@@ -43,7 +43,7 @@ module.exports = RouterBase.extend({
                 that.showView(new LegislatorsView());
             }
         });
-        ga('send', 'pageview', 'state/'+ state);
+        ga('send', 'pageview', '/state/'+ state);
     },
 
     chooseState: function () {
@@ -65,7 +65,7 @@ module.exports = RouterBase.extend({
     },
 
     viewLegislator: function (stateId, name) {
-        ga('send', 'pageview', 'state/'+ stateId + '/' + name);
+        ga('send', 'pageview', '/state/'+ stateId + '/' + name);
 
         if (App.stateId == stateId) {
             App.legislator = App.legislators.findWhere({
