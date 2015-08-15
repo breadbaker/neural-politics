@@ -15,10 +15,10 @@ module.exports = RouterBase.extend({
 
     routes: {
         '': 'chooseState',
-        'chooseState': 'chooseState',
-        'states/:state': 'viewState',
-        'view-legislators': 'viewLegislators',
-        'legislator/:state/:name': 'viewLegislator'
+        '!chooseState': 'chooseState',
+        '!states/:state': 'viewState',
+        '!view-legislators': 'viewLegislators',
+        '!legislator/:state/:name': 'viewLegislator'
     },
 
     viewState: function (state) {

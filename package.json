@@ -36,7 +36,8 @@
     "lodash": "^2.4.1",
     "minifyify": "^4.4.0",
     "time-grunt": "^0.2.9",
-    "twitter": "1.2.1"
+    "twitter": "1.2.1",
+    "phantom": "0.7.2"
   },
   "scripts": {
     "postinstall": "echo postinstall time; ./node_modules/grunt-cli/bin/grunt"

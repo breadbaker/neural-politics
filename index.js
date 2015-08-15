@@ -69,8 +69,32 @@ _.each(urlMap, function( fn, key) {
     })
 });
 
+var fs = require('fs');
+var phantom = require('phantom');
 app.get('/', function(req, res) {
-  res.sendfile(__dirname + '/web/index.html');
+    if(typeof(req.query._escaped_fragment_) !== "undefined") {
+        var pathname = __dirname + '/phantom-cache/' + req.query._escaped_fragment_.replace(/\//g,'').slice(1);
+        fs.exists(pathname, function (exists) {
+            if (exists) {
+                res.sendfile(pathname);
+            } else {
+                phantom.create(function (ph) {
+                    ph.createPage(function (page) {
+                        page.open("http://localhost:5000#" + req.query._escaped_fragment_, function (status) {
+                            page.evaluate(function () { return document.documentElement.innerHTML; }, function (result) {
+                                fs.writeFile(pathname, result, function (err) {
+                                    res.sendfile(pathname);
+                                    ph.exit();
+                                });
+                            });
+                        });
+                    });
+                });
+            }
+        });
+    } else { 
+        res.sendfile(__dirname + '/web/index.html');
+    }
 });
 
 app.use('/web',express.static(__dirname + '/web'));
