@@ -25,6 +25,13 @@ module.exports = BaseView.extend({
         App.load();
         App.legislator.fetch({
         success: function () {
+                window.twitter_message = App.legislator.twitterMessage();
+                window.facebook_title = '';
+
+                $('meta[property="og:title"]').attr('content', App.legislator.get('firstlast'));
+                $('meta[property="og:image"]').attr('content', App.legislator.get('profileImage'));
+
+                App.legislator.attributes.summary.get('chamber')
                 that.$el.html(that.legislatorTemplate(App.legislator.toJSON()));
                 var data = App.legislator.get('contributors').forContour();
                 var contributorModel = new ContributorModel({
