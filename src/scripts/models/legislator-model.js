@@ -38,6 +38,34 @@ module.exports = BaseModel.extend({
         }, this);
     },
 
+    genderMap: {
+        M: 'Man',
+        F: 'Woman'
+    },
+
+    genderMapPossesive: {
+        M: 'his',
+        F: 'her'
+    },
+
+    twitterMessage: function () {
+        var chamber = this.get('summary').get('chamber');
+
+        var str = 'Come see where ';
+        if (chamber === 'H') {
+            str += 'Congress' + this.genderMap[this.get('gender')];
+        } else {
+            str += 'Senator'
+        }
+
+        str += ' ' + this.get('firstlast');
+
+
+        str += ' gets ' + this.genderMapPossesive[this.get('gender')] + ' money';
+
+        return str;
+    },
+
     summable: ['industries', 'contributors'],
 
     toJSON: function () {
