@@ -5,7 +5,6 @@
                 <div class="legislator-holder  col-xs-4 col-md-3">
                     <div class="legislator">
                         <img id="legislater_image" class="{{party}}" src="{{getImage profileImage}}">
-                        <button onclick="fbshare('{{firstlast}}', '{{getImage profileImage}}');">Share on Facebook</button>
                     </div>
                 </div>
                 <div class="col-xs-7 col-md-8">
@@ -32,8 +31,8 @@
            <p> Assumed Office in {{first_elected}}</p>
            <div class="row text-right bubble-icon">
             
-               <i class="fa fa-twitter"></i>
-               <i class="fa fa-facebook"></i>
+               <i onclick="twitter_tweet();" class="pointer fa fa-twitter"></i>
+               <i onclick="facebook_share();" class="pointer fa fa-facebook"></i>
            </div>
 
 
