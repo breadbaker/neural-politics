@@ -34,7 +34,7 @@ window.facebook_share = function(name, image) {
         method: 'feed',
         name: window.facebook_title,
         picture: window.facebook_image,
-        description: window.twitter_message,
+        description: window.facebook_message,
         display: 'popup'
     };
     FB.ui( settings, function (response) {}  );  
@@ -56,7 +56,7 @@ window.twitter_tweet = function () {
         longUrl: shareUrlBase()
     }),
     success: function(data) {
-        window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(window.twitter_message) + ' ' + data.id, 'Tweet', 'location=100,status=0,width=600,height=350');
+        window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(window.twitter_message + ' #open-politics') + ' ' + data.id, 'Tweet', 'location=100,status=0,width=600,height=350');
     },
     error: function(a) {
         console.log(a);
