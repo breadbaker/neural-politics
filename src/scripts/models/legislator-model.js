@@ -11,6 +11,8 @@ var IndustriesCollection = require('collections/industries-collection');
 
 var ProfileModel = require('models/profile-model');
 
+var states = require('data/states');
+
 module.exports = BaseModel.extend({
 
     defaults: function () {
@@ -51,7 +53,7 @@ module.exports = BaseModel.extend({
     twitterMessage: function () {
         var chamber = this.get('summary').get('chamber');
 
-        var str = 'Come see where ';
+        var str = 'Come see where ' + states[this.get('summary').get('state')] + ' ';
         if (chamber === 'H') {
             str += 'Congress' + this.genderMap[this.get('gender')];
         } else {
@@ -64,6 +66,14 @@ module.exports = BaseModel.extend({
         str += ' gets ' + this.genderMapPossesive[this.get('gender')] + ' money';
 
         return str;
+    },
+
+    facebookMessage: function () {
+        return this.twitterMessage() + '.  ' + this.contributionSummary();
+    }, 
+
+    contributionSummary: function () {
+        return d3.format('$,2f')(this.toJSON().contributorsTotal) + ' from just the top contributors.'
     },
 
     summable: ['industries', 'contributors'],
@@ -82,6 +92,8 @@ module.exports = BaseModel.extend({
                 return memo + +el.total;
             }, 0);
         }, this);
+
+        json.twitterMessage = this.twitterMessage();
 
         // json.debt = json.summary.debt;
         // json.firstElected = json.summary.first_elected;

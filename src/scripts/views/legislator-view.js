@@ -28,6 +28,7 @@ module.exports = BaseView.extend({
                 window.twitter_message = App.legislator.twitterMessage();
                 window.facebook_title = App.legislator.get('firstlast');
                 window.facebook_image = App.legislator.get('profileImage');
+                window.facebook_message = App.legislator.facebookMessage();
 
                 App.legislator.attributes.summary.get('chamber')
                 that.$el.html(that.legislatorTemplate(App.legislator.toJSON()));
