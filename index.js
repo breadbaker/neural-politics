@@ -80,7 +80,7 @@ app.get('/', function(req, res) {
             } else {
                 phantom.create(function (ph) {
                     ph.createPage(function (page) {
-                        page.open("http://localhost:5000#" + req.query._escaped_fragment_, function (status) {
+                        page.open("http://www.politics-in-public.com#" + req.query._escaped_fragment_, function (status) {
                             page.evaluate(function () { return document.documentElement.innerHTML; }, function (result) {
                                 fs.writeFile(pathname, result, function (err) {
                                     res.sendfile(pathname);
