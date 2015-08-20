@@ -4,13 +4,16 @@ var BaseView = require('base-view');
 var Handlebars = require('handlebars');
 var templates = require('templates')(Handlebars);
 
+var states = require('data/states');
+
+
 module.exports = BaseView.extend({
     template: templates['legislators'],
 
     render: function () {
         this.$el.html(this.template({
             legislators: App.legislators.toJSON(),
-            state: App.state,
+            state: states[App.stateId],
             stateId: App.stateId
         }));
 
