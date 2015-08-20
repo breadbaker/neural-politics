@@ -57,7 +57,7 @@ module.exports = BaseView.extend({
     },
 
     toggleState: function () {
-        window.location.hash = '#states/' + this.currentStateId;
+        window.location.hash = '#!states/' + this.currentStateId;
     },
 
     renderCurrentState: function () {

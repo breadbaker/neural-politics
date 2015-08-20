@@ -14,6 +14,7 @@ var ChooseStateView = require('views/choose-state-view');
 
 var LegislatorsView = require('views/legislators-view');
 var LegislatorView = require('views/legislator-view');
+var MissionView = require('views/mission-view');
 var StateModel = require('models/state-model');
 var states = require('data/states');
 
@@ -26,7 +27,12 @@ module.exports = RouterBase.extend({
         '!chooseState': 'chooseState',
         '!states/:state': 'viewState',
         '!view-legislators': 'viewLegislators',
-        '!legislator/:state/:name': 'viewLegislator'
+        '!legislator/:state/:name': 'viewLegislator',
+        '!mission': 'mission'
+    },
+
+    mission: function () {
+        this.showView(new MissionView());
     },
 
     viewState: function (state) {
@@ -66,6 +72,7 @@ module.exports = RouterBase.extend({
 
     viewLegislator: function (stateId, name) {
         ga('send', 'pageview', '/state/'+ stateId + '/' + name);
+
 
         if (App.stateId == stateId) {
             App.legislator = App.legislators.findWhere({
