@@ -51,14 +51,8 @@ module.exports = BaseModel.extend({
     },
 
     twitterMessage: function () {
-        var chamber = this.get('summary').get('chamber');
-
         var str = 'Come see where ' + states[this.get('summary').get('state')] + ' ';
-        if (chamber === 'H') {
-            str += 'Congress' + this.genderMap[this.get('gender')];
-        } else {
-            str += 'Senator'
-        }
+        str += this.chamberMap()
 
         str += ' ' + this.get('firstlast');
 
@@ -74,6 +68,16 @@ module.exports = BaseModel.extend({
 
     contributionSummary: function () {
         return d3.format('$,2f')(this.toJSON().contributorsTotal) + ' from just the top contributors.'
+    },
+
+    chamberMap: function () {
+        var chamber = this.get('summary').get('chamber');
+
+        if (chamber === 'H') {
+            return 'Congress' + this.genderMap[this.get('gender')];
+        } else {
+            return 'Senator'
+        }
     },
 
     summable: ['industries', 'contributors'],
@@ -101,6 +105,8 @@ module.exports = BaseModel.extend({
         // json.cash = json.summary.cash_on_hand;
         // json.contributions = this.contributions();
         // json.state = json.summary.state;
+
+        json.chamberMap = this.chamberMap() + ' ' + this.get('summary').get('state');
 
         return json;
     },
