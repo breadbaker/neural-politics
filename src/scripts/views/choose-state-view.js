@@ -21,6 +21,10 @@ module.exports = BaseView.extend({
             states: statesIds
         }));
         this.$('.states-map').html(this.mapTemplate());
+        _.each($('.land'), function (item) {
+            item.setAttribute('fill', '#72b06d');
+            item.setAttribute('fill-opacity', 0.7 + Math.random() * 0.3);
+        });
         return this;
     },
 
