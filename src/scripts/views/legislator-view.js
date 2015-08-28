@@ -35,7 +35,8 @@ module.exports = BaseView.extend({
                 var data = App.legislator.get('contributors').forContour();
                 var contributorModel = new ContributorModel({
                   id: data.series[0].x,
-                  amount: data.series[0].real
+                  amount: data.series[0].real,
+                  firstlast: App.legislator.get('firstlast')
                 });
 
                 data.contributorModel = contributorModel;
@@ -44,7 +45,8 @@ module.exports = BaseView.extend({
                 var industryModel = new IndustryModel({
                     id: industryData.series[0].x,
                     proportion: industryData.series[0].y,
-                    amount: industryData.series[0].real
+                    amount: industryData.series[0].real,
+                    firstlast: App.legislator.get('firstlast')
                 });
                 industryData.industryModel = industryModel;
                 that.industryBar(industryData);
