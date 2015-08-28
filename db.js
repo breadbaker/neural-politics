@@ -41,5 +41,6 @@ module.exports = {
         record.path = req.path;
         record.key = req.query[typeMap[req.path]];
         record.save(callback);
-    }
+    },
+    Record: Record
 }
