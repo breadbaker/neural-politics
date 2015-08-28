@@ -12,5 +12,4 @@ module.exports = BaseView.extend({
         this.$el.html(this.template());
         return this;
     }
-
 });

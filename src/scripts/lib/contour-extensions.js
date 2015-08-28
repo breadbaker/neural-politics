@@ -1,4 +1,3 @@
-
 Contour.export('rotateLabels', function (data, layer, options) {
     var item;
     var circle;
@@ -25,7 +24,5 @@ Contour.export('rotateLabels', function (data, layer, options) {
         .attr('y', +circle.attr('cy') + 40)
         .attr('dx', -40)
         .text(function() { return d3.format('$,')(data[0].data[i].total) });
-
-
     },this);
 });

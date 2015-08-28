@@ -85,24 +85,8 @@ module.exports = BaseView.extend({
         $(e.currentTarget).attr('class','column tooltip-tracker selected');
     },
 
-//     renderContributorView: function () {
-//         this.con
-
-// //                 var contributorModel = App.contributors.get(contributorName) || new ContributorModel({
-// //                   id: contributorName
-// //                 });
-
-// //                 // App.load();
-// //                 contributorModel.getDetails( function () {
-// //                   var contribView = new ContributorView({
-// //                     model: contributorModel
-// //                   });
-// //                 });
-//     },
-
     contribBar: contribBar,
 
-    industryBar: industryBar,
-
+    industryBar: industryBar
 
 });
