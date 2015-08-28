@@ -37,6 +37,8 @@ _.each(statesKeys, function (key) {
                         if (error) {
                             legislator.$.profileImage
                         } else {
+                            console.log(profile['profile_image_url'].replace('_normal', '_400x400'));
+                            console.log(profile['profile_image_url']);
                             legislator.$.profileImage = profile['profile_image_url'].replace('_normal', '_400x400');
                         }
                         done();
