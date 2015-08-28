@@ -24,7 +24,7 @@ var finish = _.after(statesKeys.length, process.exit);
 
             if (record) {
                 data = JSON.parse(record.data);
-                var done _.after(data.legislator.length, function () {
+                var done = _.after(data.legislator.length, function () {
                     record.data = JSON.stringify(data);
                     record.save(finish);
                 });
