@@ -1,13 +1,17 @@
 <div class="col-xs-12 col-md-10 col-md-offset-1 leg-upper">
     <div class="basics row">
-        <div class="col-xs-8">
+        <a style="position: absolute;right: 15px;" href="#!states/{{summary.state}}" class="back-button btn btn-primary">
+            <i class="fa  fa-angle-double-left"></i>Back
+        </a>
+        <div class="col-xs-12 col-md-9">
+                
             <div class="row">
                 <div class="legislator-holder  col-xs-4 col-md-3">
                     <div class="legislator">
                         <img id="legislater_image" class="{{party}}" src="{{getImage profileImage}}">
                     </div>
                 </div>
-                <div class="col-xs-7 col-md-8">
+                <div class="col-xs-7 col-md-9">
                     <div class="row">
                         <div class="col-xs-2 party {{party}}">
                             {{party}}
@@ -17,28 +21,33 @@
                             <span>({{chamberMap}})</span>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row contact-icons">
                         <div class="col-xs-12 col-md-7 website bubble-icon">
-                            <i class="fa fa-at"></i><a href="{{website}}" target="_blank">{{website}}</a>
+                            <a href="{{website}}" target="_blank"><img class="svg_icon" src="/web/images/icon_web.svg" />{{website}}</a>
                         </div>
                         <div class="col-xs-12 col-md-5 phone bubble-icon">
-                            <i class="fa fa-phone"></i>{{phone}}
+                            <img class="svg_icon" src="/web/images/icon_phone.svg" />{{phone}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-xs-4 text-right assumed">
-                    <div class="col-xs-12 text-right">
-                <a href="#!states/{{summary.state}}" class="back-button btn btn-primary">
-                    <i class="fa  fa-angle-double-left"></i>Back
-                </a>
-            </div>
+        <div class="visible-xs col-xs-12 text-left assumed">
+           <h4> Assumed Office in {{first_elected}}</h4>
+           <div class="row text-left bubble-icon">
+            
+               <img src="/web/images/icon_twitter.svg" onclick="twitter_tweet();" class="pointer svg_icon" />
+               <img src="/web/images/icon_facebook.svg" onclick="facebook_share();" class="pointer svg_icon" />
+           </div>
+
+
+        </div>
+        <div style="padding-top: 50px;" class="visible-md col-md-3 text-right assumed">
            <h4> Assumed Office in {{first_elected}}</h4>
            <div class="row text-right bubble-icon">
             
-               <i onclick="twitter_tweet();" class="pointer fa fa-twitter"></i>
-               <i onclick="facebook_share();" class="pointer fa fa-facebook"></i>
+               <img src="/web/images/icon_twitter.svg" onclick="twitter_tweet();" class="pointer svg_icon" />
+               <img src="/web/images/icon_facebook.svg" onclick="facebook_share();" class="pointer svg_icon" />
            </div>
 
 
