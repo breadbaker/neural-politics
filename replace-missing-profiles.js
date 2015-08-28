@@ -1,5 +1,7 @@
 var _ = require('lodash');
+require('./secret')();
 
+db = require('./db');
 var states = require('./src/scripts/data/states');
 var statesKeys = Object.keys(states);
 
