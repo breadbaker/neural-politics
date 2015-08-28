@@ -15,39 +15,38 @@ var client = new Twitter(twitterConfig);
 
 var finish = _.after(statesKeys.length, process.exit);
 
-    _.each(statesKeys, function (key) {
-        var data;
-        db.Record.findOne({
-            path: '/getLegislators',
-            key: key
-        }, function (err, record) {
+_.each(statesKeys, function (key) {
+    var data;
+    db.Record.findOne({
+        path: '/getLegislators',
+        key: key
+    }, function (err, record) {
 
-            if (record) {
-                data = JSON.parse(record.data);
-                var done = _.after(data.legislator.length, function () {
-                    record.data = JSON.stringify(data);
-                    record.save(finish);
-                });
+        if (record) {
+            data = JSON.parse(record.data);
+            var done = _.after(data.legislator.length, function () {
+                record.data = JSON.stringify(data);
+                record.save(finish);
+            });
 
-                _.each(data.legislator, function (item) {
-                    if (!item.$.profileImage) {
-                        client.get('users/show', { screen_name: legislator.$.twitter_id }, function (error, profile, response) {
-                            if (error) {
-                                legislator.$.profileImage
-                            } else {
-                                legislator.$.profileImage = profile['profile_image_url'].replace('_normal', '_400x400');
-                            }
-                            done();
-                        });
-                    } else {
+            _.each(data.legislator, function (item) {
+                if (!item.$.profileImage) {
+                    client.get('users/show', { screen_name: legislator.$.twitter_id }, function (error, profile, response) {
+                        if (error) {
+                            legislator.$.profileImage
+                        } else {
+                            legislator.$.profileImage = profile['profile_image_url'].replace('_normal', '_400x400');
+                        }
                         done();
-                    }
-                });
-                
-            }
-        });
-    })
-});
+                    });
+                } else {
+                    done();
+                }
+            });
+            
+        }
+    });
+})
 // var stateReplacement = {
 //     'AK': {
 //         'N00007999': '/web/images/profile.png'
