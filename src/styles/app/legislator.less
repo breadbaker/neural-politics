@@ -1,17 +1,178 @@
+.popover {
+    font-size: 16px !important;
+}
+.back-button, .back-button:hover, .back-button:focus {
+    border-radius: 4px;
+    text-decoration: none;
+      font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 11px;
+}
+.back-button:hover {
+
+}
+rect.tooltip-tracker {
+  cursor: pointer;
+}
+.leg-upper {
+  .legislator-holder {
+    img {
+      cursor: default;
+    }
+  }
+  .contact-icons {
+    margin-top: 20px;
+  }
+    .bubble-icon {
+        font-size: 15px;
+        i {
+          width: 7px;
+          font-size: 23px;
+          margin-top: 25px;
+          background-color: rgb(108, 180, 101 );
+          padding: 7px;
+          padding-right: 27px;
+          margin-left: -15px;
+          border-radius: 33px;
+          color: white;
+          margin-right: 11px;
+        }
+        i.fa-twitter {
+          background-color: rgb(116, 202, 239);
+        }
+        i.fa-facebook {
+          background-color: rgb(85, 124, 184);
+          margin-left: 15px;
+          padding-right: 27px;
+          padding-left: 10px;
+        }
+    }
+    .assumed {
+        font-size: 18px;
+        .back-button {
+          margin-right: -15px;
+        }
+        .bubble-icon {
+              margin-top: -10px;
+        }
+    }
+
+                .name {
+              font-size: 32px;
+              span {
+          font-size: 16px;
+        }
+        }
+        .assumed {
+              font-size: 24px;
+        }
+    }
+
+.legislator-holder {
+    padding: 5px;
+  margin-top: -20px;
+          .fa-at, .fa-phone {
+              width: 7px;
+              font-size: 23px;
+              margin-top: 25px;
+              background-color: rgb(108, 180, 101 );
+              padding: 7px;
+              padding-right: 27px;
+              margin-left: -15px;
+              border-radius: 33px;
+              color: white;
+              margin-right: 11px;
+            
+        }
+    .legislator {
+        padding: 15px;
+        text-align: center;
+        font-size: 16px;
+        img {
+            width: 100%;
+            max-width: 200px;
+            border: 2px solid green;
+        }
+        img.R {
+            border-color: @red;
+        }
+
+        img.D {
+            border-color: @blue;
+        }
+        span {
+         white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 90%;
+          color: black;
+          font-weight: bold;
+        }
+        a, a:hover, a:focus {
+            text-decoration: none;
+        }
+    }
+    .legislator:hover {
+        cursor: pointer;
+    }
+}
+
+.leg-lower {
+    margin-top: -15px;
+    h3 {
+      font-size: 22px;
+    }
+}
+
+.party {
+    padding: 1px;
+  background-color: @red;
+  width: 52px;
+  color: white;
+  font-size: 34px;
+  text-align: center;
+}
+
+.party.D {
+    background-color: @blue;
+}
+
+.party.I {
+  background-color: rgb(99, 168, 94);
+}
+
+.legislators-list {
+    margin-bottom: 80px;
+
+    .legislator {
+        margin-top: 40px;
+    }
+}
+  .website {
+    a{
+      width: 100%;
+      display: inline-block;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+    }
+  }
 .legislator {
-    margin-top: 40px;
+
     .name {
         text-decoration: underline;
         font-size: 22px;
+
     }
     font-size: 16px;
     .R {
-        background-color: red;
+        background-color: @red;
         color: white;
     }
 
     .D {
-        background-color: blue;
+        background-color: @blue;
         color: white
     }
 

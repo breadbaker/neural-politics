@@ -1,11 +1,22 @@
 'use strict';
 
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-66377018-1', 'auto');
+ga('send', 'pageview', 'landing');
+
 var RouterBase = require('./router-base');
 
 var ChooseStateView = require('views/choose-state-view');
 
 var LegislatorsView = require('views/legislators-view');
+var LegislatorView = require('views/legislator-view');
+var MissionView = require('views/mission-view');
 var StateModel = require('models/state-model');
+var states = require('data/states');
 
 var __super__ = RouterBase.prototype;
 
@@ -13,8 +24,32 @@ module.exports = RouterBase.extend({
 
     routes: {
         '': 'chooseState',
-        'chooseState': 'chooseState',
-        'view-legislators': 'viewLegislators'
+        '!chooseState': 'chooseState',
+        '!states/:state': 'viewState',
+        '!view-legislators': 'viewLegislators',
+        '!legislator/:state/:name': 'viewLegislator',
+        '!mission': 'mission'
+    },
+
+    mission: function () {
+        this.showView(new MissionView());
+    },
+
+    viewState: function (state) {
+        var model = new StateModel({
+            id: state
+        });
+        App.stateId = state;
+        App.state = states[this.currentStateId];
+        App.load();
+        var that = this;
+        model.fetch({
+            success: function () {
+                App.stopLoad();
+                that.showView(new LegislatorsView());
+            }
+        });
+        ga('send', 'pageview', '/state/'+ state);
     },
 
     chooseState: function () {
@@ -33,6 +68,33 @@ module.exports = RouterBase.extend({
         var that = this;
 
         this.showView(new LegislatorsView());
+    },
+
+    viewLegislator: function (stateId, name) {
+        ga('send', 'pageview', '/state/'+ stateId + '/' + name);
+
+
+        if (App.stateId == stateId) {
+            App.legislator = App.legislators.findWhere({
+              firstlast: name
+            });
+            this.showView(new LegislatorView());
+        } else {
+            var model = new StateModel({
+                id: stateId
+            });
+            App.load();
+            var that = this;
+            model.fetch({
+                success: function () {
+                    App.stopLoad();
+                    App.legislator = App.legislators.findWhere({
+                      firstlast: name
+                    });
+                    that.showView(new LegislatorView());
+                }
+            });
+        }
     },
 
     initialize: function () {

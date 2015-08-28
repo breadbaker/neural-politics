@@ -11,6 +11,8 @@ var IndustriesCollection = require('collections/industries-collection');
 
 var ProfileModel = require('models/profile-model');
 
+var states = require('data/states');
+
 module.exports = BaseModel.extend({
 
     defaults: function () {
@@ -38,6 +40,46 @@ module.exports = BaseModel.extend({
         }, this);
     },
 
+    genderMap: {
+        M: 'Man',
+        F: 'Woman'
+    },
+
+    genderMapPossesive: {
+        M: 'his',
+        F: 'her'
+    },
+
+    twitterMessage: function () {
+        var str = 'Come see where ' + states[this.get('summary').get('state')] + ' ';
+        str += this.chamberMap()
+
+        str += ' ' + this.get('firstlast');
+
+
+        str += ' gets ' + this.genderMapPossesive[this.get('gender')] + ' money';
+
+        return str;
+    },
+
+    facebookMessage: function () {
+        return this.twitterMessage() + '.  ' + this.contributionSummary();
+    }, 
+
+    contributionSummary: function () {
+        return d3.format('$,2f')(this.toJSON().contributorsTotal) + ' from just the top contributors.'
+    },
+
+    chamberMap: function () {
+        var chamber = this.get('summary').get('chamber');
+
+        if (chamber === 'H') {
+            return 'Congress' + this.genderMap[this.get('gender')];
+        } else {
+            return 'Senator'
+        }
+    },
+
     summable: ['industries', 'contributors'],
 
     toJSON: function () {
@@ -55,12 +97,16 @@ module.exports = BaseModel.extend({
             }, 0);
         }, this);
 
+        json.twitterMessage = this.twitterMessage();
+
         // json.debt = json.summary.debt;
         // json.firstElected = json.summary.first_elected;
         // json.spent = json.summary.spent;
         // json.cash = json.summary.cash_on_hand;
         // json.contributions = this.contributions();
         // json.state = json.summary.state;
+
+        json.chamberMap = this.chamberMap() + ' ' + this.get('summary').get('state');
 
         return json;
     },

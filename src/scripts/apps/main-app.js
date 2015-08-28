@@ -3,6 +3,7 @@
 var MainRouter = require('../routers/main-router');
 // No exports
 require('lib/handlebars-helpers');
+require('lib/static-tip');
 
 var LegislatorsCollection = require('collections/legislators-collection');
 
@@ -31,10 +32,10 @@ var opts = {
 
 App.prototype = _.extend(App.prototype, {
     initialize: function () {
+        this.spinner = new Spinner(opts);
         this.legislators = new LegislatorsCollection();
         this.contributors = new Backbone.Collection();
         this.router = new MainRouter({});
-        this.spinner = new Spinner(opts);
     },
 
     load: function () {

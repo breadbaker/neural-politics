@@ -14,6 +14,7 @@
     "backbone": "^1.1.0",
     "browserify": "^3.24.1",
     "express": "3.x",
+    "mongoose": "3.8.24",
     "xml2js": "0.4.4",
     "node-rest-client": "1.4.1",
     "inherits": "~2.0.1",
@@ -27,10 +28,16 @@
     "grunt-jscs-checker": "^0.7.1",
     "grunt-notify": "^0.2.17",
     "handlebars": "^2.0.0-alpha.2",
+    "mongodb": "*",
+    "mongoose": "3.8.24",
+    "moment": "2.9.0",
+    "mongoose-relationship": "0.1.1",
     "jquery": "^2.1.0",
     "lodash": "^2.4.1",
     "minifyify": "^4.4.0",
-    "time-grunt": "^0.2.9"
+    "time-grunt": "^0.2.9",
+    "twitter": "1.2.1",
+    "phantom": "0.7.2"
   },
   "scripts": {
     "postinstall": "echo postinstall time; ./node_modules/grunt-cli/bin/grunt"

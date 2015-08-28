@@ -1,53 +1,88 @@
-<div class="col-xs-12">
+<div class="col-xs-12 col-md-10 col-md-offset-1 leg-upper">
     <div class="basics row">
-        <div class="item">
-            <img class="party-image" src="/web/images/{{partyImage party}}">
-            <span class="name">{{firstlast}}</span>
-            <i class="gender fa fa-{{getGender gender}}"></i>
-            <span class="state">{{summary.state}}</span>
+        <a style="position: absolute;right: 15px;" href="#!states/{{summary.state}}" class="back-button btn btn-primary">
+            <i class="fa  fa-angle-double-left"></i>Back
+        </a>
+        <div class="col-xs-12 col-md-9">
+                
+            <div class="row">
+                <div class="legislator-holder  col-xs-4 col-md-3">
+                    <div class="legislator">
+                        <img id="legislater_image" class="{{party}}" src="{{getImage profileImage}}">
+                    </div>
+                </div>
+                <div class="col-xs-7 col-md-9">
+                    <div class="row">
+                        <div class="col-xs-2 party {{party}}">
+                            {{party}}
+                        </div>
+                        <div class="col-xs-10 name">
+                            {{firstlast}}
+                            <span>({{chamberMap}})</span>
+                        </div>
+                    </div>
+                    <div class="row contact-icons">
+                        <div class="col-xs-12 col-md-7 website bubble-icon">
+                            <a href="{{website}}" target="_blank"><img class="svg_icon" src="/web/images/icon_web.svg" />{{website}}</a>
+                        </div>
+                        <div class="col-xs-12 col-md-5 phone bubble-icon">
+                            <img class="svg_icon" src="/web/images/icon_phone.svg" />{{phone}}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="item">
-            <i class="phone fa fa-phone-square"></i><span>{{phone}}</span>
-        </div>
-        <div class="item">
-            <a href="{{website}}" target="_blank">{{website}}</a>
-        </div>
-        <div class="item">
-            <a href="https://www.facebook.com/{{facebook_id}}" target="_blank"><i class="fa fa-facebook-square"></i></a>
-        </div>
-        <div class="item">
-            <a href="https://twitter.com/{{twitter_id}}" target="_blank"><i class="fa fa-twitter-square"></i></a>
-        </div>
+        <div class="visible-xs col-xs-12 text-left assumed">
+           <h4> Assumed Office in {{first_elected}}</h4>
+           <div class="row text-left bubble-icon">
+            
+               <img src="/web/images/icon_twitter.svg" onclick="twitter_tweet();" class="pointer svg_icon" />
+               <img src="/web/images/icon_facebook.svg" onclick="facebook_share();" class="pointer svg_icon" />
+           </div>
 
+
+        </div>
+        <div style="padding-top: 50px;" class="visible-md col-md-3 text-right assumed">
+           <h4> Assumed Office in {{first_elected}}</h4>
+           <div class="row text-right bubble-icon">
+            
+               <img src="/web/images/icon_twitter.svg" onclick="twitter_tweet();" class="pointer svg_icon" />
+               <img src="/web/images/icon_facebook.svg" onclick="facebook_share();" class="pointer svg_icon" />
+           </div>
+
+
+        </div>
     </div>
 </div>
-<div class="col-xs-12">
+<div class="col-xs-12 col-md-10 col-md-offset-1 leg-lower">
     <div class="row">
-        <div class="col-xs-6">
+        <div class="col-xs-12 col-md-6">
 
-            <h3>Top Contributors</h3>
-            <p>Total From Top Contibutions: {{currency contributorsTotal}}<i 
+            <h3>Top Contributors ( total: {{currency contributorsTotal}} )<i 
                 data-trigger="focus"
                 class="fa fa-question-circle"
                 data-toggle="popover"
                 title="Top Contributors"
                 data-content="This is a distribution amoung the top contributors to {{firstlast}}. Hover over the pieces to reveal the backer."
                 tabindex="0"
-                ></i></p>
-            <div class="contrib-pie">
+                ></i></h3>
+            <div class="contrib-bar">
+            </div>
+            <div class="contrib-details">
             </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-12 col-md-6">
 
-            <h3>Top Industries</h3>
-            <p>Total From Top Industries: {{currency industriesTotal}}<i 
+            <h3>Top Industries (total: {{currency industriesTotal}} )<i 
                 data-trigger="focus"
                 class="fa fa-question-circle"
                 data-toggle="popover"
                 title="Top Industries"
                 data-content="This is a distribution amoung the top industries that contribute to {{firstlast}}. Hover over the pieces to reveal the industry."
-                tabindex="0"></i></p>
-            <div class="industry-pie">
+                tabindex="0"></i></h3>
+            <div class="industry-bar">
+            </div>
+            <div class="industry-details">
             </div>
         </div>
     </div>

@@ -1,4 +1,3 @@
-
 'use strict';
 
 var Handlebars = require('handlebars');
@@ -23,6 +22,14 @@ Handlebars.registerHelper({
             label: label,
             value: value
         }));
+    },
+
+    getImage: function (src) {
+        if (src) {
+            return src;
+        } else {
+            return '/web/images/profile.png';
+        }
     },
 
     getGender: function (g) {

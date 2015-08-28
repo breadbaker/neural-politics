@@ -1,0 +1,13 @@
+notes for making crawlable
+
+1.
+
+#states -> #!states ( hash frags need to start with this )
+
+2.  
+
+react to _escaped_fragment_ and serve html snapshot
+
+3. 
+
+generate snapshot and cache or cache as users visit.
