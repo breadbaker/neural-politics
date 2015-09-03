@@ -33,6 +33,7 @@ _.each(statesKeys, function (key) {
 
             _.each(data.legislator, function (legislator) {
                 if (!legislator.$.profileImage) {
+                    console.log(legislator.$);
                     client.get('users/show', { screen_name: legislator.$.twitter_id }, function (error, profile, response) {
                         if (error) {
                             legislator.$.profileImage
